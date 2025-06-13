@@ -2,52 +2,42 @@ import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
-  name: "Dillion Verma",
+  name: "Kaushar Mehboob Halani",
   initials: "DV",
   url: "https://dillion.io",
-  location: "San Francisco, CA",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  location: "Mumbai, MH",
+  //locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.",
+    "CSE (Data Science) student in pre-final year. Exploring data, coding solutions, and learning step-by-step to grow in the field of Data Science.",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
-  avatarUrl: "/me.png",
+    "I'm a pre-final year student pursuing **Computer Science & Engineering** with a specialization in **Data Science**. I'm just getting started with my learning journey and currently focused on building a strong foundation in **Python**, **Machine Learning**, and **Data Analysis**. While I haven't built any projects yet, I'm actively learning every day and looking forward to applying my skills in **real-world problems** soon. My goal is to grow into a **confident data professional** – someone who can use data to solve **meaningful problems** and create **real impact**.",
+  avatarUrl: "https://media.licdn.com/dms/image/v2/D4D03AQGJudI7Hg6Ejw/profile-displayphoto-shrink_800_800/B4DZa_fw_QHQAc-/0/1746969498003?e=1755129600&v=beta&t=ZbkG93XUuxJ_1jB03nAbyuScmVVY0GtBRz2EgBbVth4",
   skills: [
-    "React",
-    "Next.js",
-    "Typescript",
-    "Node.js",
     "Python",
-    "Go",
-    "Postgres",
-    "Docker",
-    "Kubernetes",
-    "Java",
-    "C++",
   ],
   navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/", icon: HomeIcon, label: "Home" }, 
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "hello@example.com",
-    tel: "+123456789",
+    email: "thekaushar.ds@gmail.com",
+    //tel: "+123456789",
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://dub.sh/dillion-github",
+        url: "https://github.com/Ashita-no-Kaushar",
         icon: Icons.github,
 
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/kaushar-halani-904804354/",
         icon: Icons.linkedin,
 
         navbar: true,
       },
-      X: {
+     /* X: {
         name: "X",
         url: "https://dub.sh/dillion-twitter",
         icon: Icons.x,
@@ -59,10 +49,10 @@ export const DATA = {
         url: "https://dub.sh/dillion-youtube",
         icon: Icons.youtube,
         navbar: true,
-      },
+      }, */
       email: {
         name: "Send Email",
-        url: "#",
+        url: "thekaushar.ds@gmail.com",
         icon: Icons.email,
 
         navbar: false,
@@ -70,8 +60,8 @@ export const DATA = {
     },
   },
 
-  work: [
-    {
+  /* work: [
+   {
       company: "Atomic Finance",
       href: "https://atomic.finance",
       badges: [],
@@ -142,18 +132,18 @@ export const DATA = {
       end: "August 2017",
       description:
         "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
-    },
-  ],
-  education: [
+    }, 
+  ], */
+   education: [
     {
-      school: "Buildspace",
-      href: "https://buildspace.so",
-      degree: "s3, s4, sf1, s5",
-      logoUrl: "/buildspace.jpg",
-      start: "2023",
-      end: "2024",
+      school: "St. John College of Engineering and Management",
+      href: "https://sjcem.edu.in/",
+      degree: "B.Tech in Computer Science & Engineering (Data Science)",
+      logoUrl: "data:image/jpeg;base64,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",
+      start: "2022",
+      end: "2027",
     },
-    {
+   /* {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca",
       degree: "Bachelor's Degree of Computer Science (BCS)",
@@ -176,10 +166,10 @@ export const DATA = {
       logoUrl: "/ib.png",
       start: "2012",
       end: "2016",
-    },
-  ],
-  projects: [
-    {
+    }, 
+  ], */
+  /* projects: [
+   {
       title: "Chat Collect",
       href: "https://chatcollect.com",
       dates: "Jan 2024 - Feb 2024",
@@ -300,9 +290,9 @@ export const DATA = {
       image: "",
       video:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
-    },
-  ],
-  hackathons: [
+    }, 
+  ], */
+ /* hackathons: [
     {
       title: "Hack Western 5",
       dates: "November 23rd - 25th, 2018",
@@ -685,6 +675,6 @@ export const DATA = {
           href: "https://github.com/UWPortalSDK/crowmark",
         },
       ],
-    },
+    },*/
   ],
-} as const;
+} as const; 
