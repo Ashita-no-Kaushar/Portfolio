@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
 <img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
 </div>
@@ -45,3 +46,6 @@ Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://
 # License
 
 Licensed under the [MIT license](https://github.com/dillionverma/portfolio/blob/main/LICENSE.md).
+=======
+
+>>>>>>> 3509fc39ca6d889e225bed42bc409aa7516f5295
