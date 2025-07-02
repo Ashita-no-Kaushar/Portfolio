@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, FileText, Video, Eye, Download, ArrowLeft, BarChart3, Brain, Database, Save, Edit3, Check } from 'lucide-react';
+import { X, FileText, Video, Eye, Download, ArrowLeft, BarChart3, Brain, Database } from 'lucide-react';
 import NotificationSystem from '../ui/NotificationSystem';
 import { useNotificationSystem } from '../../hooks/useNotificationSystem';
 import { useResumeData } from '../../hooks/useResumeData';
@@ -16,67 +16,13 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
   const [currentStep, setCurrentStep] = useState<ResumeStep>('role-selection');
   const [selectedRole, setSelectedRole] = useState<ResumeRole | null>(null);
   const [selectedFormat, setSelectedFormat] = useState<ResumeFormat | null>(null);
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [editedLinks, setEditedLinks] = useState<{
-    preview: string;
-    download: string;
-  }>({ preview: '', download: '' });
-  const [urlErrors, setUrlErrors] = useState<{
-    preview: string;
-    download: string;
-  }>({ preview: '', download: '' });
-  const { notifications, showSuccess, showError, removeNotification } = useNotificationSystem();
+  const { notifications, showSuccess, removeNotification } = useNotificationSystem();
   const { resumeData, loading, error } = useResumeData();
 
   const roleIcons = {
     dataAnalyst: BarChart3,
     dataScientist: Brain,
     dataEngineer: Database
-  };
-
-  const validateUrl = (url: string): boolean => {
-    if (!url.trim()) return false;
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
-  const handleUrlChange = (field: 'preview' | 'download', value: string) => {
-    setEditedLinks(prev => ({ ...prev, [field]: value }));
-    
-    // Clear error when user starts typing
-    if (urlErrors[field]) {
-      setUrlErrors(prev => ({ ...prev, [field]: '' }));
-    }
-  };
-
-  const handleSaveLinks = () => {
-    const errors = { preview: '', download: '' };
-    let hasErrors = false;
-
-    if (!validateUrl(editedLinks.preview)) {
-      errors.preview = 'Please enter a valid URL';
-      hasErrors = true;
-    }
-
-    if (!validateUrl(editedLinks.download)) {
-      errors.download = 'Please enter a valid URL';
-      hasErrors = true;
-    }
-
-    setUrlErrors(errors);
-
-    if (hasErrors) {
-      showError('Please fix the URL errors before saving');
-      return;
-    }
-
-    // In a real application, you would save these to a backend
-    showSuccess('Resume links updated successfully');
-    setIsEditMode(false);
   };
 
   const handleRoleSelection = (role: ResumeRole) => {
@@ -91,29 +37,12 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
     } else {
       setCurrentStep('preview');
     }
-    
-    // Initialize edit links with current data
-    if (selectedRole && resumeData) {
-      const roleData = resumeData[selectedRole];
-      const links = format === 'text' ? roleData.textResume : roleData.videoResume;
-      setEditedLinks({
-        preview: links.preview,
-        download: links.download
-      });
-    }
   };
 
   const handlePreview = () => {
     if (!selectedRole || !selectedFormat || !resumeData) return;
     
     const roleData = resumeData[selectedRole];
-    const links = selectedFormat === 'text' ? roleData.textResume : roleData.videoResume;
-    const previewUrl = isEditMode ? editedLinks.preview : links.preview;
-    
-    if (previewUrl !== '#' && validateUrl(previewUrl)) {
-      window.open(previewUrl, '_blank');
-    }
-    
     showSuccess(`${roleData.title} ${selectedFormat === 'text' ? 'resume' : 'video resume'} preview opened`);
   };
 
@@ -121,15 +50,12 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
     if (!selectedRole || !selectedFormat || !resumeData) return;
     
     const roleData = resumeData[selectedRole];
-    const links = selectedFormat === 'text' ? roleData.textResume : roleData.videoResume;
-    const downloadUrl = isEditMode ? editedLinks.download : links.download;
     
-    if (downloadUrl !== '#' && validateUrl(downloadUrl)) {
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = `Kaushar_${roleData.title.replace(' ', '_')}_${selectedFormat === 'text' ? 'Resume.pdf' : 'Video.mp4'}`;
-      link.click();
-    }
+    // Simulate download
+    const link = document.createElement('a');
+    link.href = '#';
+    link.download = `Kaushar_${roleData.title.replace(' ', '_')}_${selectedFormat === 'text' ? 'Resume.pdf' : 'Video.mp4'}`;
+    link.click();
     
     showSuccess(`${roleData.title} ${selectedFormat === 'text' ? 'resume' : 'video resume'} downloaded successfully`);
   };
@@ -144,7 +70,6 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
       case 'video-preview':
         setCurrentStep('format-selection');
         setSelectedFormat(null);
-        setIsEditMode(false);
         break;
       default:
         setCurrentStep('role-selection');
@@ -301,75 +226,14 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
           <h2 className="text-xl font-bold text-white">
             {roleData.title} Resume Preview
           </h2>
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => setIsEditMode(!isEditMode)}
-              className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
-              aria-label={isEditMode ? "Cancel edit" : "Edit links"}
-            >
-              {isEditMode ? <X className="w-5 h-5" /> : <Edit3 className="w-5 h-5" />}
-            </button>
-            <button
-              onClick={onClose}
-              className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
-              aria-label="Close modal"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
+          <button
+            onClick={onClose}
+            className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
+            aria-label="Close modal"
+          >
+            <X className="w-6 h-6" />
+          </button>
         </div>
-
-        {/* URL Input Fields */}
-        {isEditMode && (
-          <div className="mb-6 p-6 border border-blue-400 border-opacity-30 rounded-lg bg-blue-400 bg-opacity-5">
-            <h3 className="text-lg font-semibold text-white mb-4">Edit Resume Links</h3>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Preview URL
-                </label>
-                <input
-                  type="url"
-                  value={editedLinks.preview}
-                  onChange={(e) => handleUrlChange('preview', e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg url-input-field ${
-                    urlErrors.preview ? 'url-input-error' : 
-                    editedLinks.preview && validateUrl(editedLinks.preview) ? 'url-input-success' : ''
-                  }`}
-                  placeholder="Enter preview URL"
-                />
-                {urlErrors.preview && (
-                  <p className="text-red-400 text-sm mt-1">{urlErrors.preview}</p>
-                )}
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Download URL
-                </label>
-                <input
-                  type="url"
-                  value={editedLinks.download}
-                  onChange={(e) => handleUrlChange('download', e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg url-input-field ${
-                    urlErrors.download ? 'url-input-error' : 
-                    editedLinks.download && validateUrl(editedLinks.download) ? 'url-input-success' : ''
-                  }`}
-                  placeholder="Enter download URL"
-                />
-                {urlErrors.download && (
-                  <p className="text-red-400 text-sm mt-1">{urlErrors.download}</p>
-                )}
-              </div>
-              <button
-                onClick={handleSaveLinks}
-                className="flex items-center space-x-2 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all"
-              >
-                <Save className="w-5 h-5" />
-                <span>Save Changes</span>
-              </button>
-            </div>
-          </div>
-        )}
 
         <div className="bg-white text-black p-6 rounded-lg max-h-96 overflow-y-auto floating-element mb-6">
           <div className="text-center mb-6">
@@ -446,75 +310,14 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
           <h2 className="text-xl font-bold text-white">
             {roleData.title} Video Resume
           </h2>
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => setIsEditMode(!isEditMode)}
-              className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
-              aria-label={isEditMode ? "Cancel edit" : "Edit links"}
-            >
-              {isEditMode ? <X className="w-5 h-5" /> : <Edit3 className="w-5 h-5" />}
-            </button>
-            <button
-              onClick={onClose}
-              className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
-              aria-label="Close modal"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
+          <button
+            onClick={onClose}
+            className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
+            aria-label="Close modal"
+          >
+            <X className="w-6 h-6" />
+          </button>
         </div>
-
-        {/* URL Input Fields */}
-        {isEditMode && (
-          <div className="mb-6 p-6 border border-blue-400 border-opacity-30 rounded-lg bg-blue-400 bg-opacity-5">
-            <h3 className="text-lg font-semibold text-white mb-4">Edit Video Resume Links</h3>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Video URL
-                </label>
-                <input
-                  type="url"
-                  value={editedLinks.preview}
-                  onChange={(e) => handleUrlChange('preview', e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg url-input-field ${
-                    urlErrors.preview ? 'url-input-error' : 
-                    editedLinks.preview && validateUrl(editedLinks.preview) ? 'url-input-success' : ''
-                  }`}
-                  placeholder="Enter video URL"
-                />
-                {urlErrors.preview && (
-                  <p className="text-red-400 text-sm mt-1">{urlErrors.preview}</p>
-                )}
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Video Download URL
-                </label>
-                <input
-                  type="url"
-                  value={editedLinks.download}
-                  onChange={(e) => handleUrlChange('download', e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg url-input-field ${
-                    urlErrors.download ? 'url-input-error' : 
-                    editedLinks.download && validateUrl(editedLinks.download) ? 'url-input-success' : ''
-                  }`}
-                  placeholder="Enter video download URL"
-                />
-                {urlErrors.download && (
-                  <p className="text-red-400 text-sm mt-1">{urlErrors.download}</p>
-                )}
-              </div>
-              <button
-                onClick={handleSaveLinks}
-                className="flex items-center space-x-2 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all"
-              >
-                <Save className="w-5 h-5" />
-                <span>Save Changes</span>
-              </button>
-            </div>
-          </div>
-        )}
 
         <div className="bg-gray-900 rounded-lg p-6 mb-6 floating-element">
           <div className="aspect-video bg-black rounded-lg overflow-hidden mb-4">

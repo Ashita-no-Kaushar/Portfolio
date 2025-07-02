@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, FileText, Code, Database, BarChart3, Brain, Edit3, Save, X } from 'lucide-react';
+import { ExternalLink, Github, FileText, Code, Database, BarChart3, Brain } from 'lucide-react';
 
 interface ProjectDocumentationData {
   id: string;
@@ -17,11 +17,6 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ onDocumentationClick }) => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-  const [editingProject, setEditingProject] = useState<string | null>(null);
-  const [editedUrls, setEditedUrls] = useState<{
-    liveUrl: string;
-    githubUrl: string;
-  }>({ liveUrl: '', githubUrl: '' });
 
   const filters = [
     { name: 'All', icon: Code },
@@ -31,7 +26,7 @@ const Projects: React.FC<ProjectsProps> = ({ onDocumentationClick }) => {
     { name: 'Analysis', icon: Database }
   ];
 
-  const [projects, setProjects] = useState([
+  const projects = [
     {
       id: 'fraud-detection',
       title: 'Credit Card Fraud Detection',
@@ -153,49 +148,7 @@ const Projects: React.FC<ProjectsProps> = ({ onDocumentationClick }) => {
         description: 'CNN-based medical image classification system using transfer learning for diagnostic assistance.'
       }
     }
-  ]);
-
-  const validateUrl = (url: string): boolean => {
-    if (!url.trim()) return false;
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
-  const handleEditProject = (projectId: string) => {
-    const project = projects.find(p => p.id === projectId);
-    if (project) {
-      setEditingProject(projectId);
-      setEditedUrls({
-        liveUrl: project.liveUrl,
-        githubUrl: project.githubUrl
-      });
-    }
-  };
-
-  const handleSaveProject = (projectId: string) => {
-    if (!validateUrl(editedUrls.liveUrl) || !validateUrl(editedUrls.githubUrl)) {
-      alert('Please enter valid URLs');
-      return;
-    }
-
-    setProjects(prev => prev.map(project => 
-      project.id === projectId 
-        ? { ...project, liveUrl: editedUrls.liveUrl, githubUrl: editedUrls.githubUrl }
-        : project
-    ));
-    
-    setEditingProject(null);
-    setEditedUrls({ liveUrl: '', githubUrl: '' });
-  };
-
-  const handleCancelEdit = () => {
-    setEditingProject(null);
-    setEditedUrls({ liveUrl: '', githubUrl: '' });
-  };
+  ];
 
   const filteredProjects = activeFilter === 'All' 
     ? projects 
@@ -251,14 +204,6 @@ const Projects: React.FC<ProjectsProps> = ({ onDocumentationClick }) => {
               />
               <div className="absolute inset-0 bg-blue-400 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
               
-              {/* Edit Button */}
-              <button
-                onClick={() => handleEditProject(project.id)}
-                className="absolute top-4 right-4 p-2 bg-black bg-opacity-70 text-blue-400 rounded-lg hover:bg-opacity-90 transition-all opacity-0 group-hover:opacity-100"
-              >
-                <Edit3 className="w-4 h-4" />
-              </button>
-              
               {/* Hover Overlay */}
               {hoveredProject === project.id && (
                 <div className="absolute inset-0 bg-black bg-opacity-90 flex flex-col justify-center p-6 animate-fade-in">
@@ -295,71 +240,35 @@ const Projects: React.FC<ProjectsProps> = ({ onDocumentationClick }) => {
                 </span>
               </div>
 
-              {/* URL Edit Mode */}
-              {editingProject === project.id ? (
-                <div className="space-y-3 mb-4">
-                  <input
-                    type="url"
-                    value={editedUrls.liveUrl}
-                    onChange={(e) => setEditedUrls(prev => ({ ...prev, liveUrl: e.target.value }))}
-                    className="w-full px-3 py-2 bg-black bg-opacity-60 border border-blue-400 border-opacity-30 rounded text-white text-sm placeholder-gray-400"
-                    placeholder="Live URL"
-                  />
-                  <input
-                    type="url"
-                    value={editedUrls.githubUrl}
-                    onChange={(e) => setEditedUrls(prev => ({ ...prev, githubUrl: e.target.value }))}
-                    className="w-full px-3 py-2 bg-black bg-opacity-60 border border-blue-400 border-opacity-30 rounded text-white text-sm placeholder-gray-400"
-                    placeholder="GitHub URL"
-                  />
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleSaveProject(project.id)}
-                      className="flex-1 px-3 py-2 bg-green-500 text-white text-sm rounded hover:bg-green-600 transition-all flex items-center justify-center space-x-1"
-                    >
-                      <Save className="w-3 h-3" />
-                      <span>Save</span>
-                    </button>
-                    <button
-                      onClick={handleCancelEdit}
-                      className="flex-1 px-3 py-2 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 transition-all flex items-center justify-center space-x-1"
-                    >
-                      <X className="w-3 h-3" />
-                      <span>Cancel</span>
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex gap-3 mt-6">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 px-4 py-2 bg-blue-400 text-black text-sm font-semibold rounded-lg hover:bg-blue-500 transition-all duration-200 flex items-center justify-center space-x-2 ripple-effect"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>Live</span>
-                  </a>
-                  
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 text-sm font-semibold rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 flex items-center justify-center space-x-2 ripple-effect"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>Code</span>
-                  </a>
-                  
-                  <button
-                    onClick={() => onDocumentationClick(project.documentation)}
-                    className="flex-1 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 text-sm font-semibold rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 flex items-center justify-center space-x-2 ripple-effect"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span>Docs</span>
-                  </button>
-                </div>
-              )}
+              <div className="flex gap-3 mt-6">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 px-4 py-2 bg-blue-400 text-black text-sm font-semibold rounded-lg hover:bg-blue-500 transition-all duration-200 flex items-center justify-center space-x-2 ripple-effect"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Live</span>
+                </a>
+                
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 text-sm font-semibold rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 flex items-center justify-center space-x-2 ripple-effect"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>Code</span>
+                </a>
+                
+                <button
+                  onClick={() => onDocumentationClick(project.documentation)}
+                  className="flex-1 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 text-sm font-semibold rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 flex items-center justify-center space-x-2 ripple-effect"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Docs</span>
+                </button>
+              </div>
             </div>
           </div>
         ))}

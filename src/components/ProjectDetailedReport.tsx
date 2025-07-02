@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowLeft, Download, BarChart3, TrendingUp, Settings, Target, Edit3, Save, X } from 'lucide-react';
+import React from 'react';
+import { ArrowLeft, Download, BarChart3, TrendingUp, Settings, Target } from 'lucide-react';
 import NotificationSystem from './ui/NotificationSystem';
 import { useNotificationSystem } from '../hooks/useNotificationSystem';
 
@@ -21,77 +21,14 @@ const ProjectDetailedReport: React.FC<ProjectDetailedReportProps> = ({
   project,
   onBack
 }) => {
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [editedLinks, setEditedLinks] = useState({
-    reportUrl: '',
-    downloadUrl: ''
-  });
-  const [urlErrors, setUrlErrors] = useState({
-    reportUrl: '',
-    downloadUrl: ''
-  });
-  const { notifications, showSuccess, showError, removeNotification } = useNotificationSystem();
-
-  const validateUrl = (url: string): boolean => {
-    if (!url.trim()) return false;
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
-  const handleUrlChange = (field: keyof typeof editedLinks, value: string) => {
-    setEditedLinks(prev => ({ ...prev, [field]: value }));
-    
-    // Clear error when user starts typing
-    if (urlErrors[field]) {
-      setUrlErrors(prev => ({ ...prev, [field]: '' }));
-    }
-  };
-
-  const handleSaveLinks = () => {
-    const errors = { reportUrl: '', downloadUrl: '' };
-    let hasErrors = false;
-
-    if (editedLinks.reportUrl && !validateUrl(editedLinks.reportUrl)) {
-      errors.reportUrl = 'Please enter a valid URL';
-      hasErrors = true;
-    }
-
-    if (editedLinks.downloadUrl && !validateUrl(editedLinks.downloadUrl)) {
-      errors.downloadUrl = 'Please enter a valid URL';
-      hasErrors = true;
-    }
-
-    setUrlErrors(errors);
-
-    if (hasErrors) {
-      showError('Please fix the URL errors before saving');
-      return;
-    }
-
-    // In a real application, you would save these to a backend
-    showSuccess('Detailed report links updated successfully');
-    setIsEditMode(false);
-  };
+  const { notifications, showSuccess, removeNotification } = useNotificationSystem();
 
   const handleDownload = () => {
-    const downloadUrl = editedLinks.downloadUrl || '#';
-    
-    if (downloadUrl !== '#' && validateUrl(downloadUrl)) {
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = `${project.id}-detailed-report.pdf`;
-      link.click();
-    } else {
-      // Simulate PDF download for demo
-      const link = document.createElement('a');
-      link.href = '#';
-      link.download = `${project.id}-detailed-report.pdf`;
-      link.click();
-    }
+    // Simulate PDF download for demo
+    const link = document.createElement('a');
+    link.href = '#';
+    link.download = `${project.id}-detailed-report.pdf`;
+    link.click();
     
     showSuccess('Detailed report downloaded successfully');
   };
@@ -110,80 +47,14 @@ const ProjectDetailedReport: React.FC<ProjectDetailedReportProps> = ({
               <span>Back to Documentation</span>
             </button>
             
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => setIsEditMode(!isEditMode)}
-                className="flex items-center space-x-2 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200"
-              >
-                {isEditMode ? <X className="w-5 h-5" /> : <Edit3 className="w-5 h-5" />}
-                <span>{isEditMode ? 'Cancel' : 'Edit Links'}</span>
-              </button>
-              
-              <button
-                onClick={handleDownload}
-                className="flex items-center space-x-2 px-8 py-3 bg-blue-400 text-black font-bold rounded-lg hover:bg-blue-500 transition-all duration-200 glow-button-solid ripple-effect"
-              >
-                <Download className="w-6 h-6" />
-                <span>Download Report</span>
-              </button>
-            </div>
+            <button
+              onClick={handleDownload}
+              className="flex items-center space-x-2 px-8 py-3 bg-blue-400 text-black font-bold rounded-lg hover:bg-blue-500 transition-all duration-200 glow-button-solid ripple-effect"
+            >
+              <Download className="w-6 h-6" />
+              <span>Download Report</span>
+            </button>
           </div>
-
-          {/* URL Input Fields */}
-          {isEditMode && (
-            <div className="mb-12 p-8 border border-blue-400 border-opacity-30 rounded-xl bg-blue-400 bg-opacity-5 glow-card-hover">
-              <h3 className="text-2xl font-bold text-white mb-6 glow-text-subtle">
-                Edit Report Links
-              </h3>
-              <div className="grid md:grid-cols-1 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Complete Report URL (Optional)
-                  </label>
-                  <input
-                    type="url"
-                    value={editedLinks.reportUrl}
-                    onChange={(e) => handleUrlChange('reportUrl', e.target.value)}
-                    className={`w-full px-4 py-3 rounded-lg url-input-field ${
-                      urlErrors.reportUrl ? 'url-input-error' : 
-                      editedLinks.reportUrl && validateUrl(editedLinks.reportUrl) ? 'url-input-success' : ''
-                    }`}
-                    placeholder="Enter complete report URL"
-                  />
-                  {urlErrors.reportUrl && (
-                    <p className="text-red-400 text-sm mt-1">{urlErrors.reportUrl}</p>
-                  )}
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Report Download URL (Optional)
-                  </label>
-                  <input
-                    type="url"
-                    value={editedLinks.downloadUrl}
-                    onChange={(e) => handleUrlChange('downloadUrl', e.target.value)}
-                    className={`w-full px-4 py-3 rounded-lg url-input-field ${
-                      urlErrors.downloadUrl ? 'url-input-error' : 
-                      editedLinks.downloadUrl && validateUrl(editedLinks.downloadUrl) ? 'url-input-success' : ''
-                    }`}
-                    placeholder="Enter report download URL"
-                  />
-                  {urlErrors.downloadUrl && (
-                    <p className="text-red-400 text-sm mt-1">{urlErrors.downloadUrl}</p>
-                  )}
-                </div>
-              </div>
-              
-              <button
-                onClick={handleSaveLinks}
-                className="mt-6 flex items-center space-x-2 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all"
-              >
-                <Save className="w-5 h-5" />
-                <span>Save Changes</span>
-              </button>
-            </div>
-          )}
 
           {/* Title */}
           <div className="text-center mb-16">

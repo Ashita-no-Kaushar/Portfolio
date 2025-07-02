@@ -362,36 +362,6 @@
   .slide-in-from-right {
     animation: slideInFromRight 0.3s ease-out;
   }
-
-  /* URL Input Field Styles */
-  .url-input-field {
-    background: rgba(0, 0, 0, 0.6);
-    border: 2px solid rgba(59, 130, 246, 0.3);
-    color: white;
-    transition: all 0.2s ease;
-  }
-  
-  .url-input-field:focus {
-    border-color: rgba(59, 130, 246, 0.8);
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-    outline: none;
-  }
-  
-  .url-input-field::placeholder {
-    color: rgba(156, 163, 175, 0.7);
-  }
-
-  /* Error state for invalid URLs */
-  .url-input-error {
-    border-color: rgba(239, 68, 68, 0.8);
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
-  }
-
-  /* Success state for valid URLs */
-  .url-input-success {
-    border-color: rgba(34, 197, 94, 0.8);
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
-  }
 }
 
 /* OPTIMIZED KEYFRAME ANIMATIONS */
