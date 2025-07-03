@@ -117,7 +117,7 @@ const WorkExperience: React.FC = () => {
                     {exp.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-4 py-2 bg-blue-400 bg-opacity-20 text-blue-400 text-sm rounded-full border border-blue-400 border-opacity-50 hover:border-opacity-100 hover:bg-opacity-30 transition-all duration-200 cursor-default glow-tool-chip"
+                        className="inline-flex items-center justify-center flex-shrink-0 px-4 py-2 bg-blue-400 bg-opacity-20 text-blue-400 text-sm rounded-full border border-blue-400 border-opacity-50 hover:border-opacity-100 hover:bg-opacity-30 transition-all duration-200 cursor-default glow-tool-chip"
                       >
                         {skill}
                       </span>

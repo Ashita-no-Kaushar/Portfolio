@@ -118,22 +118,22 @@ const ProjectDetailedReport: React.FC<ProjectDetailedReportProps> = ({
               <div className="lg:col-span-2">
                 <div className="p-8 border border-blue-400 border-opacity-30 rounded-xl bg-blue-400 bg-opacity-5 glow-card-hover h-full">
                   <h4 className="text-2xl font-bold text-white mb-6">Key Performance Metrics</h4>
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="text-center p-6 bg-blue-400 bg-opacity-10 rounded-lg border border-blue-400 border-opacity-20">
-                      <div className="text-4xl font-bold text-blue-400 mb-2 glow-text-blue">94.7%</div>
-                      <div className="text-gray-300 font-semibold">Accuracy</div>
+                  <div className="grid grid-cols-2 gap-4 md:gap-6">
+                    <div className="text-center p-4 md:p-6 bg-blue-400 bg-opacity-10 rounded-lg border border-blue-400 border-opacity-20">
+                      <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2 glow-text-blue">94.7%</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Accuracy</div>
                     </div>
-                    <div className="text-center p-6 bg-blue-400 bg-opacity-10 rounded-lg border border-blue-400 border-opacity-20">
-                      <div className="text-4xl font-bold text-blue-400 mb-2 glow-text-blue">92.3%</div>
-                      <div className="text-gray-300 font-semibold">Precision</div>
+                    <div className="text-center p-4 md:p-6 bg-blue-400 bg-opacity-10 rounded-lg border border-blue-400 border-opacity-20">
+                      <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2 glow-text-blue">92.3%</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Precision</div>
                     </div>
-                    <div className="text-center p-6 bg-blue-400 bg-opacity-10 rounded-lg border border-blue-400 border-opacity-20">
-                      <div className="text-4xl font-bold text-blue-400 mb-2 glow-text-blue">91.8%</div>
-                      <div className="text-gray-300 font-semibold">Recall</div>
+                    <div className="text-center p-4 md:p-6 bg-blue-400 bg-opacity-10 rounded-lg border border-blue-400 border-opacity-20">
+                      <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2 glow-text-blue">91.8%</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Recall</div>
                     </div>
-                    <div className="text-center p-6 bg-blue-400 bg-opacity-10 rounded-lg border border-blue-400 border-opacity-20">
-                      <div className="text-4xl font-bold text-blue-400 mb-2 glow-text-blue">0.93</div>
-                      <div className="text-gray-300 font-semibold">F1-Score</div>
+                    <div className="text-center p-4 md:p-6 bg-blue-400 bg-opacity-10 rounded-lg border border-blue-400 border-opacity-20">
+                      <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2 glow-text-blue">0.93</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">F1-Score</div>
                     </div>
                   </div>
                   <p className="text-gray-300 mt-6 leading-relaxed">
