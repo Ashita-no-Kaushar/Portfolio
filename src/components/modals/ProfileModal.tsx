@@ -108,10 +108,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
         </h2>
         <button
           onClick={onClose}
-          className="p-2 text-blue-400 hover:text-blue-300 transition-colors glow-icon-hover"
+          className="p-1 text-blue-400 hover:text-blue-300 transition-colors glow-icon-hover"
           aria-label="Close modal"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5" />
         </button>
       </div>
 
@@ -150,20 +150,20 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={() => setActiveSection('main')}
-            className="flex items-center justify-center p-3 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            className="flex items-center justify-center p-2 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
-          <h2 className="text-2xl font-bold text-white glow-text">
+          <h2 className="flex-1 text-center text-2xl font-bold text-white glow-text mx-4">
             {profileSections.find(s => s.id === sectionId)?.name} Profiles
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-blue-400 hover:text-blue-300 transition-colors glow-icon-hover"
+            className="p-1 text-blue-400 hover:text-blue-300 transition-colors glow-icon-hover"
             aria-label="Close modal"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 

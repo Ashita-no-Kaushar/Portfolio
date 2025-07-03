@@ -84,10 +84,10 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
         </h2>
         <button
           onClick={onClose}
-          className="p-2 text-blue-400 hover:text-blue-300 transition-colors glow-icon-hover"
+          className="p-1 text-blue-400 hover:text-blue-300 transition-colors glow-icon-hover"
           aria-label="Close modal"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5" />
         </button>
       </div>
 
@@ -148,20 +148,20 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={handleBack}
-            className="flex items-center justify-center p-3 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            className="flex items-center justify-center p-2 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
-          <h2 className="text-2xl font-bold text-white glow-text">
+          <h2 className="flex-1 text-center text-2xl font-bold text-white glow-text mx-4">
             {roleData.title} Resume
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-blue-400 hover:text-blue-300 transition-colors glow-icon-hover"
+            className="p-1 text-blue-400 hover:text-blue-300 transition-colors glow-icon-hover"
             aria-label="Close modal"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
@@ -218,20 +218,20 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={handleBack}
-            className="flex items-center justify-center p-3 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            className="flex items-center justify-center p-2 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
-          <h2 className="text-xl font-bold text-white">
+          <h2 className="flex-1 text-center text-xl font-bold text-white mx-4">
             {roleData.title} Resume Preview
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
+            className="p-1 text-blue-400 hover:text-blue-300 transition-colors"
             aria-label="Close modal"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
@@ -302,20 +302,20 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={handleBack}
-            className="flex items-center justify-center p-3 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            className="flex items-center justify-center p-2 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
-          <h2 className="text-xl font-bold text-white">
+          <h2 className="flex-1 text-center text-xl font-bold text-white mx-4">
             {roleData.title} Video Resume
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
+            className="p-1 text-blue-400 hover:text-blue-300 transition-colors"
             aria-label="Close modal"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
