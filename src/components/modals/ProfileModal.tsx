@@ -115,7 +115,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {profileSections.map((section) => {
           const IconComponent = section.icon;
           return (
@@ -139,14 +139,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
           );
         })}
       </div>
-
-      <button
-        onClick={onClose}
-        className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-transparent border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-300 breathing-glow"
-      >
-        <ArrowLeft className="w-5 h-5" />
-        <span>Close</span>
-      </button>
     </>
   );
 
@@ -175,7 +167,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
           </button>
         </div>
 
-        <div className="space-y-4 mb-8">
+        <div className="space-y-4">
           {links.map((link) => {
             const IconComponent = link.icon;
             return (
