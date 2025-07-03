@@ -38,10 +38,10 @@ const ProjectDetailedReport: React.FC<ProjectDetailedReportProps> = ({
       <div className="min-h-screen bg-black text-white">
         <div className="container mx-auto px-6 py-12 max-w-6xl">
           {/* Header */}
-          <div className="flex items-center justify-center mb-12">
+          <div className="relative mb-12">
             <button
               onClick={onBack}
-              className="absolute left-6 flex items-center justify-center p-3 bg-transparent border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 glow-button-outline ripple-effect"
+              className="absolute left-0 top-0 flex items-center justify-center p-3 bg-transparent border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 glow-button-outline ripple-effect"
               aria-label="Back to documentation"
             >
               <ArrowLeft className="w-5 h-5" />
