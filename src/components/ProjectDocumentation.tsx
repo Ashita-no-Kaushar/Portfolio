@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, FileText, Download } from 'lucide-react';
+import { ArrowLeft, FileText } from 'lucide-react';
 import NotificationSystem from './ui/NotificationSystem';
 import { useNotificationSystem } from '../hooks/useNotificationSystem';
 
@@ -40,21 +40,13 @@ const ProjectDocumentation: React.FC<ProjectDocumentationProps> = ({
       <div className="min-h-screen bg-black text-white">
         <div className="container mx-auto px-6 py-12 max-w-5xl">
           {/* Header */}
-          <div className="flex items-center justify-between mb-12">
+          <div className="flex items-center justify-center mb-12">
             <button
               onClick={onBack}
-              className="flex items-center space-x-2 px-6 py-3 bg-transparent border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 glow-button-outline ripple-effect"
+              className="absolute left-6 flex items-center justify-center p-3 bg-transparent border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 glow-button-outline ripple-effect"
+              aria-label="Back to projects"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span>Back to Projects</span>
-            </button>
-            
-            <button
-              onClick={handleDownloadPDF}
-              className="flex items-center space-x-2 px-6 py-3 bg-blue-400 text-black font-semibold rounded-lg hover:bg-blue-500 transition-all duration-200 glow-button-solid ripple-effect"
-            >
-              <Download className="w-5 h-5" />
-              <span>Download PDF</span>
             </button>
           </div>
 
@@ -169,14 +161,22 @@ const ProjectDocumentation: React.FC<ProjectDocumentationProps> = ({
             </div>
           </div>
 
-          {/* Detailed Report Button */}
-          <div className="text-center">
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
               onClick={onDetailedReport}
-              className="px-10 py-5 bg-blue-400 text-black font-bold text-lg rounded-lg hover:bg-blue-500 transition-all duration-200 flex items-center space-x-3 mx-auto glow-button-solid ripple-effect"
+              className="px-10 py-5 bg-blue-400 text-black font-bold text-lg rounded-lg hover:bg-blue-500 transition-all duration-200 flex items-center space-x-3 glow-button-solid ripple-effect"
             >
               <FileText className="w-6 h-6" />
               <span>View Detailed Report</span>
+            </button>
+            
+            <button
+              onClick={handleDownloadPDF}
+              className="px-10 py-5 bg-transparent border-2 border-blue-400 text-blue-400 font-bold text-lg rounded-lg hover:bg-blue-400 hover:text-black transition-all duration-200 flex items-center space-x-3 glow-button-outline ripple-effect"
+            >
+              <FileText className="w-6 h-6" />
+              <span>Download PDF</span>
             </button>
           </div>
         </div>
