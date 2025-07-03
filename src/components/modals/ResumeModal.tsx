@@ -148,10 +148,10 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={handleBack}
-            className="flex items-center space-x-2 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            className="flex items-center justify-center p-3 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            aria-label="Go back"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back</span>
+            <ArrowLeft className="w-5 h-5" />
           </button>
           <h2 className="text-2xl font-bold text-white glow-text">
             {roleData.title} Resume
@@ -218,10 +218,10 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={handleBack}
-            className="flex items-center space-x-2 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            className="flex items-center justify-center p-3 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            aria-label="Go back"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back</span>
+            <ArrowLeft className="w-5 h-5" />
           </button>
           <h2 className="text-xl font-bold text-white">
             {roleData.title} Resume Preview
@@ -302,10 +302,10 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ onClose }) => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={handleBack}
-            className="flex items-center space-x-2 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            className="flex items-center justify-center p-3 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            aria-label="Go back"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back</span>
+            <ArrowLeft className="w-5 h-5" />
           </button>
           <h2 className="text-xl font-bold text-white">
             {roleData.title} Video Resume

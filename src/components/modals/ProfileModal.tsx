@@ -150,10 +150,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={() => setActiveSection('main')}
-            className="flex items-center space-x-2 px-4 py-2 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            className="flex items-center justify-center p-3 bg-transparent border border-blue-400 text-blue-400 rounded hover:bg-blue-400 hover:text-black transition-all breathing-glow"
+            aria-label="Go back"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back</span>
+            <ArrowLeft className="w-5 h-5" />
           </button>
           <h2 className="text-2xl font-bold text-white glow-text">
             {profileSections.find(s => s.id === sectionId)?.name} Profiles
