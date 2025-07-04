@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Home, User, Zap, FolderOpen, Briefcase, GraduationCap, Mail } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems = [
     { id: 'home', label: 'Home', icon: Home },
@@ -15,10 +18,18 @@ const Navigation: React.FC = () => {
   ];
 
   const scrollToSection = (sectionId: string) => {
+    setIsDrawerOpen(false);
+    
+    // If we're not on the home page, navigate to home first
+    if (location.pathname !== '/') {
+      navigate(`/#${sectionId}`);
+      return;
+    }
+    
+    // If we're already on the home page, just scroll to the section
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsDrawerOpen(false);
     }
   };
 

@@ -1,11 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 
-interface NotFoundProps {
-  onBackToHome: () => void;
-}
+const NotFound: React.FC = () => {
+  const navigate = useNavigate();
 
-const NotFound: React.FC<NotFoundProps> = ({ onBackToHome }) => {
+  const handleBackToHome = () => {
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-6">
       <div className="text-center max-w-2xl mx-auto">
@@ -26,7 +29,7 @@ const NotFound: React.FC<NotFoundProps> = ({ onBackToHome }) => {
         </div>
         
         <button
-          onClick={onBackToHome}
+          onClick={handleBackToHome}
           className="group px-8 py-4 bg-blue-400 text-black font-semibold rounded-lg hover:bg-blue-500 transition-all duration-200 flex items-center space-x-3 mx-auto glow-button-solid ripple-effect"
         >
           <Home className="w-5 h-5" />
