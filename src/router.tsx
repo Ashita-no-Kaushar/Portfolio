@@ -5,6 +5,13 @@ import ProjectDocumentationPage from './pages/ProjectDocumentationPage';
 import ProjectDetailedReportPage from './pages/ProjectDetailedReportPage';
 import NotFound from './components/NotFound';
 
+// Loader function to simulate loading delay for home page
+const homeLoader = async () => {
+  // Add a delay to ensure loading screen is visible when navigating from error page
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  return null;
+};
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -13,6 +20,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+        loader: homeLoader,
       },
       {
         path: 'project/:projectId',
