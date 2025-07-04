@@ -109,6 +109,14 @@ function App() {
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navigation />
       
+      {/* Temporary 404 Trigger Button */}
+      <button
+        onClick={handle404}
+        className="fixed top-24 right-6 z-50 p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-300"
+      >
+        Trigger 404
+      </button>
+      
       <main>
         <section id="home">
           <Hero
