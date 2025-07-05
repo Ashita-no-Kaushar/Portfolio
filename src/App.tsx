@@ -19,11 +19,11 @@ function App() {
   const { notifications, removeNotification } = useNotificationSystem();
   const [isAppInitiallyLoading, setIsAppInitiallyLoading] = useState(true);
 
-  // Handle initial loading state with minimum display time
+  // Handle initial loading state with increased minimum display time
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsAppInitiallyLoading(false);
-    }, 1000); // Minimum 1 second display time
+    }, 2000); // Increased to 2 seconds for better visibility
 
     return () => clearTimeout(timer);
   }, []);
