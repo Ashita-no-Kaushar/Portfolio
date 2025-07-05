@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet, useNavigation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useNavigation, useLocation } from 'react-router-dom';
 import LoadingScreen from './components/LoadingScreen';
 import NotificationSystem from './components/ui/NotificationSystem';
 import { useNotificationSystem } from './hooks/useNotificationSystem';
@@ -15,10 +15,27 @@ export interface ProjectDocumentationData {
 
 function App() {
   const navigation = useNavigation();
+  const location = useLocation();
   const { notifications, removeNotification } = useNotificationSystem();
+  const [isAppInitiallyLoading, setIsAppInitiallyLoading] = useState(true);
 
-  // Show loading screen during route transitions
-  if (navigation.state === 'loading') {
+  // Handle initial loading state for home page only
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsAppInitiallyLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show loading screen if:
+  // 1. Navigation is in loading state (route transitions with loaders)
+  // 2. OR app is initially loading AND we're on the home page
+  const shouldShowLoadingScreen = 
+    navigation.state === 'loading' || 
+    (isAppInitiallyLoading && location.pathname === '/');
+
+  if (shouldShowLoadingScreen) {
     return <LoadingScreen />;
   }
 
