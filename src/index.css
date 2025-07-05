@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Set body background to black immediately to prevent white screen flash */
-body {
+/* Ensure black background from the very start to prevent any flashes */
+html, body, #root {
   background-color: #000000;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 /* Custom animations and effects */

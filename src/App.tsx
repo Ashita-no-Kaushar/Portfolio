@@ -19,10 +19,13 @@ function App() {
   const { notifications, removeNotification } = useNotificationSystem();
   const [isAppInitiallyLoading, setIsAppInitiallyLoading] = useState(true);
 
-  // Handle initial loading state - remove artificial delay
+  // Handle initial loading state with minimum display time
   useEffect(() => {
-    // Set loading to false immediately after first render
-    setIsAppInitiallyLoading(false);
+    const timer = setTimeout(() => {
+      setIsAppInitiallyLoading(false);
+    }, 1000); // Minimum 1 second display time
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Show loading screen if:
