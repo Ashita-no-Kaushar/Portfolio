@@ -5,10 +5,8 @@ import ProjectDocumentationPage from './pages/ProjectDocumentationPage';
 import ProjectDetailedReportPage from './pages/ProjectDetailedReportPage';
 import NotFound from './components/NotFound';
 
-// Loader function to simulate loading delay for home page
+// Remove artificial delay - loader returns immediately
 const homeLoader = async () => {
-  // Add a delay to ensure loading screen is visible when navigating from error page
-  await new Promise(resolve => setTimeout(resolve, 1500));
   return null;
 };
 

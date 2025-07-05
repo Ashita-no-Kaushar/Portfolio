@@ -7,7 +7,7 @@ interface LoadingScreenProps {
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ isVisible }) => {
   return (
     <div 
-      className={`fixed inset-0 bg-black flex items-center justify-center z-[999] transition-all duration-500 ease-in-out ${
+      className={`fixed inset-0 bg-black flex items-center justify-center z-[999] transition-opacity duration-300 ease-in-out ${
         isVisible 
           ? 'opacity-100 visible pointer-events-auto' 
           : 'opacity-0 invisible pointer-events-none'
