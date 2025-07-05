@@ -1,8 +1,18 @@
 import React from 'react';
 
-const LoadingScreen: React.FC = () => {
+interface LoadingScreenProps {
+  isVisible: boolean;
+}
+
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ isVisible }) => {
   return (
-    <div className="fixed inset-0 bg-black flex items-center justify-center z-50 loading-screen">
+    <div 
+      className={`fixed inset-0 bg-black flex items-center justify-center z-50 transition-all duration-500 ease-in-out ${
+        isVisible 
+          ? 'opacity-100 visible pointer-events-auto' 
+          : 'opacity-0 invisible pointer-events-none'
+      }`}
+    >
       <div className="flex flex-col items-center space-y-8">
         <div className="relative">
           <div className="w-20 h-20 border-4 border-transparent border-t-blue-400 rounded-full animate-spin glow-spinner"></div>

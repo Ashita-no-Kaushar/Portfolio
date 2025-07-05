@@ -35,12 +35,11 @@ function App() {
     navigation.state === 'loading' || 
     (isAppInitiallyLoading && location.pathname === '/');
 
-  if (shouldShowLoadingScreen) {
-    return <LoadingScreen />;
-  }
-
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Loading screen is always present, visibility controlled by prop */}
+      <LoadingScreen isVisible={shouldShowLoadingScreen} />
+      
       <Outlet />
       
       <NotificationSystem
