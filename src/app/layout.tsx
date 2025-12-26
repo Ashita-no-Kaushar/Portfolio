@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/layout/navbar';
 import ScrollToTopButton from '@/components/ui/scroll-to-top-button';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: 'Kaushar Halani Portfolio',
@@ -33,8 +31,6 @@ export default function RootLayout({
         <Navbar />
         {children}
         <ScrollToTopButton />
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
