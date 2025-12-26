@@ -202,6 +202,24 @@ export const experiences: Experience[] = [
   },
   {
     id: 3,
+    role: 'Data Engineer',
+    company: 'Tech Solutions Ltd',
+    period: '2018 - 2020',
+    description: 'Built and maintained scalable data infrastructure and pipelines. Ensured data quality and availability for analytics and machine learning teams.',
+    responsibilities: [
+      'Designed and implemented ETL pipelines for processing large-scale datasets.',
+      'Maintained data warehouses and optimized database performance.',
+      'Collaborated with data scientists to deploy ML models into production.',
+      'Implemented data quality checks and monitoring systems.'
+    ],
+    achievements: [
+      'Reduced data pipeline processing time by 50% through optimization.',
+      'Built a real-time data streaming platform handling 1M+ events per day.',
+      'Improved data reliability with automated quality checks, reducing errors by 30%.'
+    ]
+  },
+  {
+    id: 4,
     role: 'Junior Data Analyst',
     company: 'Analytics Solutions',
     period: '2015 - 2017',

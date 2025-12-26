@@ -23,6 +23,18 @@ const jobRoles = [
     }
   },
   {
+    role: 'Data Engineer',
+    description: 'Expert in building scalable data pipelines, ETL processes, and data infrastructure.',
+    textResume: {
+        previewUrl: '/resumes/data-engineer-resume-preview.pdf',
+        downloadUrl: '/resumes/data-engineer-resume-download.pdf',
+    },
+    videoResume: {
+        previewUrl: '/resumes/data-engineer-video-resume-preview.mp4',
+        downloadUrl: '/resumes/data-engineer-video-resume-download.mp4',
+    }
+  },
+  {
     role: 'Data Analyst',
     description: 'Specializing in data visualization, business intelligence, and extracting actionable insights.',
     textResume: {
