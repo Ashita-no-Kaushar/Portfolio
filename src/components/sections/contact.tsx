@@ -56,17 +56,9 @@ const Contact = () => {
     setError(null);
     setSuccess(false);
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-        setError("EmailJS is not configured. Please contact the site owner.");
-        form.reset();
-        setIsSubmitting(false);
-        setTimeout(() => setError(null), 5000); // Hide after 5 seconds
-        return;
-    }
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_ga86v1r";
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_6bkwxh1";
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "TGmz5QmXKPFg2KU6w";
 
     const templateParams = {
         from_name: values.name,
