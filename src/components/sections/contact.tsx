@@ -102,7 +102,7 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your Name" {...field} disabled={isSubmitting}/>
+                            <Input placeholder="Your Name" {...field} disabled={isSubmitting} autoComplete="off"/>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -115,7 +115,7 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="your.email@example.com" {...field} disabled={isSubmitting}/>
+                            <Input placeholder="your.email@example.com" {...field} disabled={isSubmitting} autoComplete="off"/>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -129,7 +129,7 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>Subject</FormLabel>
                         <FormControl>
-                          <Input placeholder="Subject" {...field} disabled={isSubmitting}/>
+                          <Input placeholder="Subject" {...field} disabled={isSubmitting} autoComplete="off"/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -142,7 +142,7 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>Message</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Your message..." {...field} className="min-h-[150px]" disabled={isSubmitting}/>
+                          <Textarea placeholder="Your message..." {...field} className="min-h-[150px]" disabled={isSubmitting} autoComplete="off"/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
