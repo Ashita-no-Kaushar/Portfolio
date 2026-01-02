@@ -11,7 +11,7 @@ const opacity = {
   },
   enter: {
     opacity: 0.75,
-    transition: { duration: 1, delay: 0.2 },
+    transition: { duration: 0.3, delay: 0 },
   },
 }
 const slideUp = {
@@ -47,7 +47,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         setTimeout(() => {
           onComplete?.()
         }, 1000)
-      }, 600)
+      }, 800)
       return
     }
 
@@ -55,7 +55,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       () => {
         setIndex(index + 1)
       },
-      index === 0 ? 700 : 450,
+      index === 0 ? 800 : 600,
     )
   }, [index, onComplete])
 
