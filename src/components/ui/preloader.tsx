@@ -33,12 +33,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   const [index, setIndex] = useState(0)
   const [dimension, setDimension] = useState({ width: 0, height: 0 })
   const [isExiting, setIsExiting] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const width = window.innerWidth
-    setDimension({ width, height: window.innerHeight })
-    setIsMobile(width < 768)
+    setDimension({ width: window.innerWidth, height: window.innerHeight })
   }, [])
 
   useEffect(() => {
@@ -50,7 +47,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         setTimeout(() => {
           onComplete?.()
         }, 1000)
-      }, isMobile ? 600 : 800)
+      }, 800)
       return
     }
 
@@ -58,9 +55,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       () => {
         setIndex(index + 1)
       },
-      isMobile ? 600 : 800, // Faster on mobile for better performance
+      800, // Equal time for all greetings on all devices - respecting every language equally
     )
-  }, [index, onComplete, isMobile])
+  }, [index, onComplete])
 
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height} L0 0`
   const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`
