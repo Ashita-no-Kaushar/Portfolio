@@ -22,7 +22,7 @@ const MotionSection = ({ id, children }: { id: string; children: React.ReactNode
     id={id}
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: false, amount: 0.2 }}
+    viewport={{ once: false, amount: 0.1 }}
     variants={sectionVariants}
     transition={{ duration: 0.5 }}
   >
