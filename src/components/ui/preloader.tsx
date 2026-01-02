@@ -55,7 +55,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       () => {
         setIndex(index + 1)
       },
-      index === 0 ? 800 : 600,
+      800, // Equal time for all greetings - respecting every language equally
     )
   }, [index, onComplete])
 
