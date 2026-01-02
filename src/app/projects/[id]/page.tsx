@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 
-export default function ProjectDetailsPage({ params }: { params: { id: string } }) {
+export default function ProjectDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const project = projects.find((p) => p.id.toString() === id);
 
@@ -100,7 +100,7 @@ export default function ProjectDetailsPage({ params }: { params: { id: string } 
                     For a deeper dive into the project's performance, accuracy metrics, and the underlying theory, you can view the detailed report.
                   </p>
                   <div className="mt-6">
-                    <Button asChild size="lg" className="transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+                    <Button asChild size="lg" className="animate-button-pulse transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
                       <Link href={`/projects/${project.id}/report`}>
                         <BookOpen className="mr-2" />
                         View Detailed Report

@@ -39,7 +39,7 @@ export default function ProfilePage() {
           <div className="max-w-2xl mx-auto">
             <Accordion type="single" collapsible className="w-full space-y-4">
               {profileLinks.map((category, index) => {
-                const Icon = LucideIcons[category.icon as keyof typeof LucideIcons] || LucideIcons.Link;
+                const Icon = (LucideIcons[category.icon as keyof typeof LucideIcons] || LucideIcons.Link) as React.ComponentType<any>;
                 return (
                   <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg">
                     <AccordionTrigger className="text-xl font-headline p-6 hover:no-underline justify-between w-full">

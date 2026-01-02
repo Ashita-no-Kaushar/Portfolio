@@ -13,7 +13,7 @@ import {
   CardContent,
 } from '@/components/ui/card';
 
-export default function ProjectReportPage({ params }: { params: { id: string } }) {
+export default function ProjectReportPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const project = projects.find((p) => p.id.toString() === id);
 

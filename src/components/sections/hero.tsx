@@ -2,10 +2,14 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Download, User } from 'lucide-react';
+// import { SyntheticBackground } from '@/components/ui/synthetic-background';
 
 const Hero = () => {
   return (
     <section id="home" className="relative h-dvh flex items-center justify-center text-center pt-16 md:pt-20">
+      {/* Electric Blue Shader Background - Uncomment to enable */}
+      {/* <SyntheticBackground /> */}
+      
       {/* The main container for your hero content */}
       <div className="container z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center space-y-6">
@@ -14,7 +18,7 @@ const Hero = () => {
               Kaushar Halani
             </h1>
             <h2 className="text-2xl md:text-3xl font-body text-primary">
-              Transforming Data into Actionable Insights
+              Turning Complex Data into Clear Decisions
             </h2>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
@@ -40,3 +44,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

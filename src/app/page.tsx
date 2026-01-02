@@ -35,13 +35,6 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <main className="flex-1">
-        {/* Temporary Test Button - Remove after testing error page */}
-        <button 
-          onClick={() => { throw new Error("Test error for error.tsx page") }}
-          className="fixed bottom-4 right-4 z-50 px-4 py-2 bg-red-500 text-white rounded-lg text-sm"
-        >
-          Test Error Page
-        </button>
         <Hero />
         <div className="pt-16 md:pt-20">
         <Separator />

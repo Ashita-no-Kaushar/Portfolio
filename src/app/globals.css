@@ -94,16 +94,16 @@
 }
 
 @keyframes gradient {
-  0%, 100% {
+  0% {
     background-position: 0% center;
   }
-  50% {
-    background-position: 100% center;
+  100% {
+    background-position: 300% center;
   }
 }
 
 .animate-gradient {
-  animation: gradient 3s ease infinite;
+  animation: gradient 8s linear infinite;
 }
 
 @keyframes button-pulse {

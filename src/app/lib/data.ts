@@ -149,6 +149,66 @@ icon: 'GitBranch',
   },
 ];
 
+export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+
+export interface Language {
+  name: string;
+  level: CEFRLevel;
+  icon: string;
+  description: string;
+}
+
+export const languages: Language[] = [
+  {
+    name: 'English',
+    level: 'B1',
+    icon: 'Globe',
+    description: 'Intermediate proficiency in speaking, reading, and writing.',
+  },
+  {
+    name: 'Hindi',
+    level: 'B1',
+    icon: 'MessageCircle',
+    description: 'Intermediate fluency in speaking, reading, and writing.',
+  },
+  {
+    name: 'Gujarati',
+    level: 'B1',
+    icon: 'MessageSquare',
+    description: 'Intermediate conversational ability and basic reading skills.',
+  },
+  {
+    name: 'German',
+    level: 'A1',
+    icon: 'Flag',
+    description: 'Basic understanding of common phrases and simple expressions.',
+  },
+  {
+    name: 'Mandarin',
+    level: 'A1',
+    icon: 'Newspaper',
+    description: 'Elementary proficiency in basic greetings and common words.',
+  },
+  {
+    name: 'Japanese',
+    level: 'A1',
+    icon: 'BookOpen',
+    description: 'Beginner level comprehension of simple phrases and expressions.',
+  },
+  {
+    name: 'Korean',
+    level: 'A1',
+    icon: 'Languages',
+    description: 'Basic familiarity with simple vocabulary and expressions.',
+  },
+  {
+    name: 'French',
+    level: 'A1',
+    icon: 'Volume2',
+    description: 'Elementary knowledge of everyday phrases and basic interactions.',
+  },
+];
+
 
 export const aboutMe = {
   description: "I'm Kaushar Halani, a data science enthusiast driven by the belief that data can transform decision-making and create better outcomes for the future. Every dataset tells a story, and I'm passionate about uncovering those insights.\n\nAs a Computer Science (Data Science) student at St. John College of Engineering and Management, I'm developing expertise in Python, machine learning, and data analytics. My goal is to build solutions that turn complex data into actionable insights for real-world challenges.\n\nI believe in continuous growth, both technically and personally—striving to become a better version of myself each day while maintaining integrity and kindness in everything I do.",
