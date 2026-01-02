@@ -45,12 +45,15 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
 
               <section className="mb-12">
                 <h2 className="text-2xl font-bold font-headline mb-4">Project Overview</h2>
-                <div className="aspect-[16/9] relative mb-8 rounded-lg overflow-hidden">
+                <div className="aspect-[16/9] relative mb-8 rounded-lg overflow-hidden w-full">
                     <Image 
                         src={project.imageUrl}
                         alt={project.title}
-                        fill
-                        className="object-cover"
+                        width={1200}
+                        height={675}
+                        sizes="(max-width: 768px) 100vw, 1200px"
+                        priority
+                        className="object-cover w-full h-full"
                         data-ai-hint={project.imageHint}
                     />
                 </div>

@@ -50,12 +50,14 @@ const Projects = () => {
                     {filteredProjects.map((project) => (
                         <Card key={project.id} className="flex flex-col overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-primary/20 hover:shadow-2xl">
                         <CardHeader>
-                            <div className="aspect-[3/2] relative">
+                            <div className="aspect-[3/2] relative w-full">
                             <Image
                                 src={project.imageUrl}
                                 alt={project.title}
-                                fill
-                                className="object-cover"
+                                width={600}
+                                height={400}
+                                sizes="(max-width: 768px) 100vw, 600px"
+                                className="object-cover w-full h-full"
                                 data-ai-hint={project.imageHint}
                                 loading="lazy"
                                 />

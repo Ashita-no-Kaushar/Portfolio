@@ -17,11 +17,13 @@ const About = () => {
             <CardContent className="p-6 md:p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <div className="md:col-span-1">
-                  <div className="aspect-square relative w-full max-w-[250px] mx-auto">
+                  <div className="w-[250px] h-[250px] mx-auto relative">
                     <Image
                       src="/icon.svg"
                       alt="Kaushar Halani"
-                      fill
+                      width={250}
+                      height={250}
+                      priority
                       className="object-contain rounded-full shadow-lg"
                     />
                   </div>
