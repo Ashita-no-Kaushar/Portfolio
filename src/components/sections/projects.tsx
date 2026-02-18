@@ -17,8 +17,10 @@ const Projects = () => {
 
   const projectCategories = ['All', 'Machine Learning', 'NLP', 'Data Analysis'];
 
-  const filteredProjects = activeTab === 'All'
-    ? projects
+    const prioritizedProjects = [...projects].sort((a, b) => a.id - b.id);
+
+    const filteredProjects = activeTab === 'All'
+        ? prioritizedProjects
     : projects.filter(project => project.category === activeTab);
 
   return (
@@ -26,7 +28,7 @@ const Projects = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Projects</h2>
-          <p className="text-lg text-muted-foreground mt-2">A selection of my work in data science.</p>
+                    <p className="mx-auto mt-2 max-w-2xl text-lg text-muted-foreground">Selected projects with clear problem statements, approach, and measurable outcomes.</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -47,9 +49,16 @@ const Projects = () => {
 
                 <TabsContent value={activeTab}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                    {filteredProjects.map((project) => (
-                        <Card key={project.id} className="flex flex-col overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-primary/20 hover:shadow-2xl">
+                                        {filteredProjects.map((project) => (
+                                                <Card key={project.id} className="group flex flex-col overflow-hidden border-border/60 bg-card/70 backdrop-blur-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-primary/20 hover:shadow-2xl">
                         <CardHeader>
+                                                    {project.id <= 3 && (
+                                                        <div className="mb-3">
+                                                            <Badge variant="outline" className="border-primary/40 bg-primary/10 text-primary text-[11px] uppercase tracking-wide">
+                                                                Featured Project
+                                                            </Badge>
+                                                        </div>
+                                                    )}
                             <div className="aspect-[3/2] relative w-full">
                             <Image
                                 src={project.imageUrl}
@@ -61,11 +70,12 @@ const Projects = () => {
                                 data-ai-hint={project.imageHint}
                                 loading="lazy"
                                 />
+                                                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                             </div>
                             <CardTitle className="pt-4">{project.title}</CardTitle>
                         </CardHeader>
                         <CardContent className="flex-grow space-y-4">
-                            <p className="text-muted-foreground text-sm">{project.description}</p>
+                                                        <p className="text-muted-foreground text-sm min-h-[84px]">{project.description}</p>
                             <div className="flex flex-wrap gap-2">
                             {project.methodologies.map((method) => (
                                 <Badge key={method} variant="secondary">{method}</Badge>
@@ -75,12 +85,12 @@ const Projects = () => {
                         <CardFooter>
                             <div className="flex w-full justify-center gap-2 flex-wrap">
                                 <Button asChild variant="outline" className="flex-1 min-w-[100px]">
-                                    <Link href={project.githubUrl} target="_blank">
+                                    <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                                     <Github /> GitHub
                                     </Link>
                                 </Button>
-                                <Button asChild variant="outline" className="flex-1 min-w-[100px]">
-                                    <Link href={project.liveUrl} target="_blank">
+                                <Button asChild className="flex-1 min-w-[100px] shadow-md shadow-primary/20">
+                                    <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                                     <ExternalLink /> Live
                                     </Link>
                                 </Button>

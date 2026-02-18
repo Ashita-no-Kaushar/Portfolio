@@ -11,6 +11,7 @@ const navItems = [
   { name: 'Home', href: '/#home' },
   { name: 'About', href: '/#about' },
   { name: 'Projects', href: '/#projects' },
+  { name: 'Experience', href: '/#experience' },
   { name: 'Skills', href: '/#skills' },
   { name: 'Education', href: '/#education' },
   { name: 'Contact', href: '/#contact' },
@@ -111,7 +112,7 @@ export default function Navbar() {
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+          {/* Brand Name */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="text-xl md:text-2xl font-bold font-heading bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-transparent">
               Kaushar Halani

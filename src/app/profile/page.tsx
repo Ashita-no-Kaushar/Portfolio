@@ -33,7 +33,7 @@ export default function ProfilePage() {
               Online Profiles
             </h1>
             <p className="text-lg text-muted-foreground mt-2">
-              Connect with me on various platforms.
+              Verified platforms that showcase my analytics work, learning, and professional presence.
             </p>
           </div>
           <div className="max-w-2xl mx-auto">
@@ -41,7 +41,7 @@ export default function ProfilePage() {
               {profileLinks.map((category, index) => {
                 const Icon = (LucideIcons[category.icon as keyof typeof LucideIcons] || LucideIcons.Link) as React.ComponentType<any>;
                 return (
-                  <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg">
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border bg-card rounded-lg transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg">
                     <AccordionTrigger className="text-xl font-headline p-6 hover:no-underline justify-between w-full">
                       <div className="flex items-center gap-3">
                         <Icon className="h-6 w-6 text-primary" />
@@ -53,7 +53,7 @@ export default function ProfilePage() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-6 pb-6">
                         {category.links.map((link) => {
                           return (
-                            <Card key={link.name} className="transform transition-all duration-300 hover:scale-105 hover:shadow-primary/10 hover:shadow-md">
+                            <Card key={link.name} className="bg-background border-border transform transition-all duration-300 hover:scale-105 hover:shadow-primary/10 hover:shadow-md">
                               <CardContent className="p-0">
                                 <Link
                                   href={link.url}

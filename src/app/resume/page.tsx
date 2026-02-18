@@ -11,20 +11,20 @@ import { InlineMessage } from '@/components/ui/inline-message';
 
 const jobRoles = [
   {
-    role: 'Data Scientist',
-    description: 'Focused on machine learning, statistical modeling, and data-driven product development.',
+    role: 'Data Analyst',
+    description: 'Primary target role focused on data visualization, business intelligence, and actionable insights.',
     textResume: {
-      previewUrl: '/resumes/data-scientist-resume-preview.pdf',
-      downloadUrl: '/resumes/data-scientist-resume-download.pdf',
+        previewUrl: '/resumes/data-analyst-resume-preview.pdf',
+        downloadUrl: '/resumes/data-analyst-resume-download.pdf',
     },
     videoResume: {
-        previewUrl: '/resumes/data-scientist-video-resume-preview.mp4',
-        downloadUrl: '/resumes/data-scientist-video-resume-download.mp4',
+        previewUrl: '/resumes/data-analyst-video-resume-preview.mp4',
+        downloadUrl: '/resumes/data-analyst-video-resume-download.mp4',
     }
   },
   {
     role: 'Data Engineer',
-    description: 'Expert in building scalable data pipelines, ETL processes, and data infrastructure.',
+    description: 'Next target role with focus on scalable data pipelines, ETL workflows, and reliable data infrastructure.',
     textResume: {
         previewUrl: '/resumes/data-engineer-resume-preview.pdf',
         downloadUrl: '/resumes/data-engineer-resume-download.pdf',
@@ -35,15 +35,15 @@ const jobRoles = [
     }
   },
   {
-    role: 'Data Analyst',
-    description: 'Specializing in data visualization, business intelligence, and extracting actionable insights.',
+    role: 'Data Scientist',
+    description: 'Long-term target role centered on machine learning, statistical modeling, and data-driven product development.',
     textResume: {
-        previewUrl: '/resumes/data-analyst-resume-preview.pdf',
-        downloadUrl: '/resumes/data-analyst-resume-download.pdf',
+      previewUrl: '/resumes/data-scientist-resume-preview.pdf',
+      downloadUrl: '/resumes/data-scientist-resume-download.pdf',
     },
     videoResume: {
-        previewUrl: '/resumes/data-analyst-video-resume-preview.mp4',
-        downloadUrl: '/resumes/data-analyst-video-resume-download.mp4',
+        previewUrl: '/resumes/data-scientist-video-resume-preview.mp4',
+        downloadUrl: '/resumes/data-scientist-video-resume-download.mp4',
     }
   },
 ];
@@ -55,9 +55,10 @@ interface ResumeDialogProps {
   type: ResumeType;
   previewUrl: string;
   downloadUrl: string;
+  isReady?: boolean;
 }
 
-const ResumeDialog = ({ role, type, previewUrl, downloadUrl }: ResumeDialogProps) => {
+const ResumeDialog = ({ role, type, previewUrl, downloadUrl, isReady = false }: ResumeDialogProps) => {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = () => {
@@ -80,21 +81,36 @@ const ResumeDialog = ({ role, type, previewUrl, downloadUrl }: ResumeDialogProps
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex-col sm:flex-col sm:space-x-0 gap-2 sm:gap-2">
-            <Button asChild>
-                <Link href={previewUrl} target="_blank">
-                    <Eye className="mr-2" />
-                    Preview
-                </Link>
-            </Button>
-            <Button asChild variant="secondary" onClick={handleDownload}>
-                <Link href={downloadUrl} download>
-                    <Download className="mr-2" />
-                    Download
-                </Link>
-            </Button>
-             <InlineMessage show={isDownloading}>
-                Downloading {role} {type} Resume... Check your downloads folder!
-            </InlineMessage>
+            {isReady ? (
+              <>
+                <Button asChild>
+                    <Link href={previewUrl} target="_blank">
+                        <Eye className="mr-2" />
+                        Preview
+                    </Link>
+                </Button>
+                <Button asChild variant="secondary" onClick={handleDownload}>
+                    <Link href={downloadUrl} download>
+                        <Download className="mr-2" />
+                        Download
+                    </Link>
+                </Button>
+                 <InlineMessage show={isDownloading}>
+                    Downloading {role} {type} Resume... Check your downloads folder!
+                </InlineMessage>
+              </>
+            ) : (
+              <>
+                <Button asChild>
+                  <Link href="/#contact">
+                    Request Latest Resume
+                  </Link>
+                </Button>
+                <InlineMessage>
+                  Resume file for {role} ({type}) will be attached manually on request.
+                </InlineMessage>
+              </>
+            )}
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -118,7 +134,7 @@ export default function ResumePage() {
           <div className="text-center mb-12 pt-8">
             <h1 className="text-4xl md:text-5xl font-bold font-headline">Choose Your Resume</h1>
             <p className="text-lg text-muted-foreground mt-2">
-              Select the version that best fits the opportunity.
+              Role-specific resumes aligned with my current target path: Data Analyst to Data Engineer to Data Scientist.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -132,8 +148,8 @@ export default function ResumePage() {
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <div className="flex justify-center gap-4">
-                        <ResumeDialog role={job.role} type="Text" previewUrl={job.textResume.previewUrl} downloadUrl={job.textResume.downloadUrl} />
-                        <ResumeDialog role={job.role} type="Video" previewUrl={job.videoResume.previewUrl} downloadUrl={job.videoResume.downloadUrl} />
+                        <ResumeDialog role={job.role} type="Text" previewUrl={job.textResume.previewUrl} downloadUrl={job.textResume.downloadUrl} isReady={false} />
+                        <ResumeDialog role={job.role} type="Video" previewUrl={job.videoResume.previewUrl} downloadUrl={job.videoResume.downloadUrl} isReady={false} />
                       </div>
                     </div>
                   </div>

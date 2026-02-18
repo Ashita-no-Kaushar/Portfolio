@@ -86,7 +86,7 @@ const Contact = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Get in Touch</h2>
-          <p className="text-lg text-muted-foreground mt-2">Let's connect and build something amazing together.</p>
+          <p className="text-lg text-muted-foreground mt-2">Open to internships, freelance collaborations, and entry-level data roles. I usually respond within 24 hours.</p>
         </div>
 
         <div className="max-w-2xl mx-auto">

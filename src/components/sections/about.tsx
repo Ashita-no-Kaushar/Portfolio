@@ -9,7 +9,7 @@ const About = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">About Me</h2>
-          <p className="text-lg text-muted-foreground mt-2">A passionate data scientist with a love for finding stories in data.</p>
+          <p className="text-lg text-muted-foreground mt-2">Aspiring Data Analyst with a clear growth path into Data Engineering and Data Science.</p>
         </div>
         
         <div className="max-w-4xl mx-auto">

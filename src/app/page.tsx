@@ -45,10 +45,10 @@ export default function Home() {
         <MotionSection id="projects">
           <Projects />
         </MotionSection>
-        {/* <Separator />
+        <Separator />
         <MotionSection id="experience">
           <Experience />
-        </MotionSection> */}
+        </MotionSection>
         <Separator />
         <MotionSection id="skills">
           <Skills />

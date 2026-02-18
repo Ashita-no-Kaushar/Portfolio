@@ -13,7 +13,6 @@ import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -84,7 +83,9 @@ const Skills = () => {
                     )}
                   >
                     <CardHeader className="items-center p-2">
-                      <Icon className="h-10 w-10 mb-2 text-primary" />
+                      <div className="mb-2">
+                        <Icon className="h-10 w-10 text-primary" />
+                      </div>
                       <CardTitle className="text-lg">{category.name}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex-grow text-center p-2">
@@ -141,7 +142,9 @@ const Skills = () => {
                     )}
                   >
                     <CardHeader className="items-center p-2">
-                      <Icon className="h-10 w-10 mb-2 text-primary" />
+                      <div className="mb-2">
+                        <Icon className="h-10 w-10 text-primary" />
+                      </div>
                       <CardTitle className="text-lg">{skill.name}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex-grow text-center p-2">
@@ -169,9 +172,12 @@ const Skills = () => {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {languages.map((language) => {
-                const Icon =
-                  (LucideIcons[language.icon as keyof typeof LucideIcons] ||
-                  LucideIcons['Languages']) as React.ComponentType<any>;
+                const languageLogoMap: Record<string, string> = {
+                  English: 'E',
+                  Hindi: 'ह',
+                  Gujarati: 'ગ',
+                };
+                const languageLogo = languageLogoMap[language.name] ?? language.name.charAt(0).toUpperCase();
                 return (
                   <Card
                     key={language.name}
@@ -181,7 +187,9 @@ const Skills = () => {
                     )}
                   >
                     <CardHeader className="items-center p-2">
-                      <Icon className="h-10 w-10 mb-2 text-primary" />
+                      <div className="mb-2">
+                        <span className="text-4xl font-bold leading-none text-primary">{languageLogo}</span>
+                      </div>
                       <CardTitle className="text-lg">{language.name}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex-grow text-center p-2">

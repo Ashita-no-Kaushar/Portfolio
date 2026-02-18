@@ -16,20 +16,20 @@ const Education = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Education</h2>
-          <p className="text-lg text-muted-foreground mt-2">My academic background.</p>
+          <p className="text-lg text-muted-foreground mt-2">Academic foundation and coursework aligned with analytics, data engineering, and data science growth.</p>
         </div>
         <div className="relative max-w-4xl mx-auto">
-          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-primary/20" />
+          <div className="absolute left-1/2 top-0 hidden h-full w-0.5 bg-primary/20 md:block" />
           {education.map((edu, index) => (
             <div
               key={edu.id}
-              className={`mb-8 flex items-center w-full ${
+              className={`mb-8 flex w-full items-center justify-start md:${
                 index % 2 === 0 ? 'justify-start' : 'justify-end'
               }`}
             >
               <div
-                className={`w-1/2 ${
-                  index % 2 === 0 ? 'pr-8' : 'pl-8'
+                className={`w-full md:w-1/2 ${
+                  index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'
                 }`}
               >
                 <Accordion type="single" collapsible>
@@ -72,7 +72,7 @@ const Education = () => {
                     </Card>
                 </Accordion>
               </div>
-              <div className="absolute left-1/2 -translate-x-1/2 bg-background border-2 border-primary rounded-full p-2">
+              <div className="absolute left-1/2 hidden -translate-x-1/2 rounded-full border-2 border-primary bg-background p-2 md:block">
                 <GraduationCap className="text-primary" />
               </div>
             </div>
