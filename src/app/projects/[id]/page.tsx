@@ -14,12 +14,6 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
   const { id } = use(params);
   const project = projects.find((p) => p.id.toString() === id);
 
-  const datasetSizeByProject: Record<number, string> = {
-    1: '5 MB (tabular customer records)',
-    2: '8 MB (social text samples)',
-    3: '6 MB (historical sales time-series)',
-  };
-
   if (!project) {
     notFound();
   }
@@ -50,36 +44,7 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
               <CardContent className="p-6 md:p-8">
 
               <section className="mb-12">
-                <h2 className="text-2xl font-bold font-headline mb-4">Project Snapshot</h2>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div className="rounded-lg border p-4">
-                    <p className="text-xs uppercase tracking-wide text-muted-foreground">Tooling</p>
-                    <p className="mt-1 text-sm text-foreground">Python, Notebook workflow, model evaluation</p>
-                  </div>
-                  <div className="rounded-lg border p-4">
-                    <p className="text-xs uppercase tracking-wide text-muted-foreground">Project Type</p>
-                    <p className="mt-1 text-sm text-foreground">{project.category}</p>
-                  </div>
-                  <div className="rounded-lg border p-4">
-                    <p className="text-xs uppercase tracking-wide text-muted-foreground">Dataset</p>
-                    <p className="mt-1 text-sm text-foreground">{datasetSizeByProject[project.id] ?? 'Custom business dataset'}</p>
-                  </div>
-                  <div className="rounded-lg border p-4">
-                    <p className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Links</p>
-                    <div className="flex flex-wrap gap-2">
-                      <Button asChild size="sm" variant="outline">
-                        <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">Repository</Link>
-                      </Button>
-                      <Button asChild size="sm" variant="outline">
-                        <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live Demo</Link>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section className="mb-12">
-                <h2 className="text-2xl font-bold font-headline mb-4">Case Study Overview</h2>
+                <h2 className="text-2xl font-bold font-headline mb-4">Project Overview</h2>
                 <div className="aspect-[16/9] relative mb-8 rounded-lg overflow-hidden w-full">
                     <Image 
                         src={project.imageUrl}
@@ -93,36 +58,42 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ id: s
                     />
                 </div>
                 <p className="text-lg text-muted-foreground leading-relaxed">{project.description}</p>
-                <p className="mt-4 text-base text-muted-foreground">
-                  <span className="font-semibold text-foreground">Problem:</span> {project.problemStatement}
-                </p>
               </section>
 
               <section className="mb-12">
-                <h2 className="text-2xl font-bold font-headline mb-4">Approach</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  The implementation followed a practical workflow: data preparation, feature and model experimentation,
-                  evaluation against business-oriented criteria, and clear delivery artifacts for stakeholder use.
-                </p>
-              </section>
-
-              <section className="mb-12">
-                <h2 className="text-2xl font-bold font-headline mb-4">Outcome</h2>
-                <div className="aspect-video relative my-8 rounded-lg overflow-hidden border">
-                  <Image
-                    src="https://picsum.photos/seed/arch-diagram/800/450"
-                    alt="Architecture Diagram"
-                    fill
-                    className="object-contain p-4"
-                    data-ai-hint="architecture diagram"
-                  />
+                <h2 className="text-2xl font-bold font-headline mb-4">Theory and Approach</h2>
+                <div className="prose prose-invert max-w-none text-muted-foreground">
+                  <p>
+                    This is where the detailed theory behind the project would be explained. For example, in the case of the <strong>{project.title}</strong>, we started by gathering extensive customer data, including transaction history, demographics, and support interactions. 
+                  </p>
+                  <p>
+                    The core of the project was the application of several machine learning algorithms. We experimented with Logistic Regression as a baseline and moved to more complex models like Random Forest and Gradient Boosting to capture non-linear relationships in the data. Feature engineering was a critical step, where we created new variables such as customer tenure, average purchase value, and frequency of support tickets.
+                  </p>
+                  <p>
+                    Model performance was evaluated using metrics like AUC-ROC, precision, and recall to ensure that we were not only accurately predicting churn but also minimizing false positives.
+                  </p>
                 </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">{project.outcomeSummary}</p>
-                <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
-                  {project.impactMetrics.map((metric) => (
-                    <li key={metric}>{metric}</li>
-                  ))}
-                </ul>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-2xl font-bold font-headline mb-4">Architecture</h2>
+                <div className="prose prose-invert max-w-none text-muted-foreground">
+                    <p>
+                        The architecture for this project was designed to be scalable and maintainable. It consisted of a data ingestion pipeline, a processing and feature engineering stage, a model training environment, and a deployment API.
+                    </p>
+                    <div className="aspect-video relative my-8 rounded-lg overflow-hidden border">
+                         <Image 
+                            src="https://picsum.photos/seed/arch-diagram/800/450"
+                            alt="Architecture Diagram"
+                            fill
+                            className="object-contain p-4"
+                            data-ai-hint="architecture diagram"
+                        />
+                    </div>
+                    <p>
+                        Data was sourced from multiple databases and APIs, consolidated in a data lake, and then processed using Apache Spark. Models were trained in a distributed environment and versioned using MLflow. The final model was exposed via a REST API, allowing other services to get predictions in real-time. This setup ensured that the system could handle a large volume of data and provide predictions with low latency.
+                    </p>
+                </div>
               </section>
 
               <section>
