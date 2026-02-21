@@ -11,7 +11,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import { profileLinks } from '@/app/lib/data';
 import Link from 'next/link';
-import { ArrowLeft, ChevronDown } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 
 
@@ -42,12 +42,11 @@ export default function ProfilePage() {
                 const Icon = (LucideIcons[category.icon as keyof typeof LucideIcons] || LucideIcons.Link) as React.ComponentType<any>;
                 return (
                   <AccordionItem key={index} value={`item-${index}`} className="border border-border bg-card rounded-lg transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg">
-                    <AccordionTrigger className="text-xl font-headline p-6 hover:no-underline justify-between w-full">
+                    <AccordionTrigger className="text-xl font-headline p-6 hover:no-underline w-full">
                       <div className="flex items-center gap-3">
                         <Icon className="h-6 w-6 text-primary" />
                         <span>{category.category}</span>
                       </div>
-                      <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200 text-primary" />
                     </AccordionTrigger>
                     <AccordionContent>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-6 pb-6">

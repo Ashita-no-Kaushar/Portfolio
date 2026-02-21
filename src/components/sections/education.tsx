@@ -2,7 +2,7 @@
 'use client';
 import { education } from '@/app/lib/data';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { GraduationCap, ChevronDown } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -42,8 +42,7 @@ const Education = () => {
                                         <CardDescription className="text-sm break-words">{edu.institution}</CardDescription>
                                         <p className="text-xs sm:text-sm text-muted-foreground pt-1">{edu.period}</p>
                                     </div>
-                                    <AccordionTrigger className="p-2 rounded-lg hover:bg-accent/50 [&[data-state=open]>svg]:rotate-180 flex-shrink-0">
-                                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200 text-primary" />
+                                    <AccordionTrigger className="p-2 rounded-lg hover:bg-accent/50 flex-shrink-0">
                                         <span className="sr-only">Toggle details</span>
                                     </AccordionTrigger>
                                 </header>

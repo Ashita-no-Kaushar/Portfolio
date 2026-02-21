@@ -1,19 +1,36 @@
 
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
+export interface ProjectResult {
+  title: string;
+  description: string;
+  imageUrl?: string;
+  imageHint?: string;
+}
+
+export interface ProjectDataFile {
+  name: string;
+  url: string;
+}
+
 export interface Project {
   id: number;
   title: string;
   description: string;
-  problemStatement: string;
-  outcomeSummary: string;
-  impactMetrics: string[];
-  methodologies: string[];
-  category: 'Machine Learning' | 'NLP' | 'Data Analysis';
+  tool: string;
+  projectTypes: string[];
+  link?: string;
+  linkLabel?: string;
+  dataFiles?: ProjectDataFile[];
+  category: 'Machine Learning' | 'NLP' | 'Data Analysis' | 'Data Visualization';
   imageUrl: string;
   imageHint: string;
-  githubUrl: string;
-  liveUrl: string;
+  goal: string;
+  process: string;
+  insights: string;
+  results: ProjectResult[];
+  placeholderLabel?: string;
+  githubUrl?: string;
   docsPath: string;
 }
 
@@ -22,46 +39,148 @@ export const projects: Project[] = [
     id: 1,
     title: 'Customer Churn Prediction Pipeline',
     description: 'Built an end-to-end churn prediction workflow using supervised learning, feature engineering, and model comparison. The project focuses on clear business interpretation and actionable retention insights rather than only model score optimization.',
-    problemStatement: 'Retention teams lacked a reliable way to prioritize at-risk customers early enough for intervention.',
-    outcomeSummary: 'Delivered a risk-scoring workflow with interpretable outputs that can guide retention campaigns and follow-up planning.',
-    impactMetrics: ['AUC-focused model comparison', 'Risk-tier segmentation output', 'Reusable training + inference workflow'],
-    methodologies: ['Logistic Regression', 'Random Forest', 'Feature Engineering', 'Model Evaluation'],
+    tool: 'Python (scikit-learn, pandas)',
+    projectTypes: ['Machine Learning', 'Feature Engineering', 'Model Evaluation'],
+    link: 'https://github.com/your-username/customer-churn-pipeline',
+    dataFiles: [
+      { name: 'customer_data.csv', url: '/project-files/customer_data.csv' },
+      { name: 'churn_labels.csv', url: '/project-files/churn_labels.csv' },
+      { name: 'customer_data_clean.xlsx', url: '/project-files/customer_data_clean.xlsx' },
+    ],
     category: 'Machine Learning',
     imageUrl: PlaceHolderImages.find(p => p.id === 'project-1')?.imageUrl ?? '',
     imageHint: PlaceHolderImages.find(p => p.id === 'project-1')?.imageHint ?? '',
+    goal: 'Just a couple sentences here describing the motivation for the project and the business problem it addresses. Retention teams lacked a reliable way to prioritize at-risk customers early enough for effective intervention.',
+    process: 'Describe briefly the steps, methodology and tooling used throughout the project. Data was collected and cleaned, features were engineered from raw transaction history, and multiple classifiers (Logistic Regression, Random Forest) were trained and compared using AUC-ROC as the primary evaluation metric.',
+    insights: 'Write down your key findings, results, conclusions and highlights here. Customers in the 18–35 age group showed the highest churn rates despite high volume, and tenure under 12 months was the strongest predictor of churn across all models.',
+    results: [
+      {
+        title: 'Result 1 – Churn Rate Peaks in Younger Age Groups',
+        description: 'Younger customers (ages 18–35) had the highest churn rates despite representing a large customer volume. Targeted retention campaigns in this segment could yield the highest return.',
+        imageUrl: 'https://picsum.photos/seed/churn-age/800/450',
+        imageHint: 'bar chart churn by age group',
+      },
+      {
+        title: 'Result 2 – Tenure Is the Strongest Predictor',
+        description: 'Customers with fewer than 12 months of tenure were 3× more likely to churn. Onboarding improvements and early engagement programs are the highest-leverage interventions.',
+        imageUrl: 'https://picsum.photos/seed/churn-tenure/800/450',
+        imageHint: 'line chart churn rate by tenure months',
+      },
+      {
+        title: 'Result 3 – Random Forest Outperformed Baseline',
+        description: 'The Random Forest model achieved an AUC of 0.87 vs. 0.72 for Logistic Regression baseline, with better precision on the high-risk tier that matters most for retention action.',
+      },
+    ],
     githubUrl: 'https://github.com/your-username/customer-churn-pipeline',
-    liveUrl: 'https://your-demo-url.com/churn-pipeline',
     docsPath: '/projects/1',
   },
   {
     id: 2,
     title: 'Social Sentiment Intelligence Dashboard',
     description: 'Created an NLP workflow to classify sentiment from social text and visualize trends in an interactive dashboard. The project demonstrates text preprocessing, vectorization, model experimentation, and practical reporting for brand monitoring use cases.',
-    problemStatement: 'Teams needed a quick way to track sentiment trends from high-volume unstructured social text.',
-    outcomeSummary: 'Built a sentiment pipeline plus dashboard-ready outputs to surface trend shifts and category-level signals.',
-    impactMetrics: ['End-to-end NLP preprocessing', 'Classifier benchmarking workflow', 'Dashboard-friendly sentiment summaries'],
-    methodologies: ['NLP', 'Text Preprocessing', 'Classification', 'Dashboarding'],
+    tool: 'Python (NLTK, scikit-learn, Plotly)',
+    projectTypes: ['NLP', 'Data Visualization', 'Data Cleaning'],
+    link: 'https://github.com/your-username/sentiment-intelligence-dashboard',
+    dataFiles: [
+      { name: 'social_raw.csv', url: '/project-files/social_raw.csv' },
+      { name: 'social_clean.xlsx', url: '/project-files/social_clean.xlsx' },
+    ],
     category: 'NLP',
     imageUrl: PlaceHolderImages.find(p => p.id === 'project-2')?.imageUrl ?? '',
     imageHint: PlaceHolderImages.find(p => p.id === 'project-2')?.imageHint ?? '',
+    goal: 'Just a couple sentences here describing the motivation for the project. Teams needed a quick way to track sentiment trends from high-volume unstructured social text without manual review of every post.',
+    process: 'Describe briefly the steps, methodology and tooling used. Raw social text was cleaned (stopwords, tokenization, lemmatization), vectorized with TF-IDF, and classified using a Naive Bayes and SVM comparison. Outputs were piped into a Plotly dashboard for trend visualization.',
+    insights: 'Write down your key findings, results, conclusions and highlights here. Negative sentiment spikes correlated strongly with product release cycles, and weekend posts consistently showed more positive sentiment than weekday posts across all categories.',
+    results: [
+      {
+        title: 'Result 1 – Negative Sentiment Spikes Around Product Releases',
+        description: 'A clear spike in negative sentiment was identified within 48 hours of each product release, likely driven by unmet expectations and early support issues. Monitoring this window is essential for a rapid response.',
+        imageUrl: 'https://picsum.photos/seed/sentiment-release/800/450',
+        imageHint: 'time series sentiment line chart',
+      },
+      {
+        title: 'Result 2 – Weekend Posts Are Significantly More Positive',
+        description: 'Sentiment scores were on average 23% more positive on weekends vs. weekdays across all product categories, suggesting timing-sensitive opportunities for engagement and promotional content.',
+      },
+      {
+        title: 'Result 3 – SVM Outperformed Naive Bayes on Ambiguous Posts',
+        description: 'SVM achieved 82% accuracy vs. 74% for Naive Bayes, with a notable improvement on neutral and mixed-sentiment posts that are hardest to classify correctly.',
+      },
+    ],
     githubUrl: 'https://github.com/your-username/sentiment-intelligence-dashboard',
-    liveUrl: 'https://your-demo-url.com/sentiment-dashboard',
     docsPath: '/projects/2',
   },
   {
     id: 3,
     title: 'Retail Sales Forecasting Studio',
     description: 'Designed a time-series forecasting project to estimate near-term sales trends and support inventory planning decisions. Includes baseline comparisons, error analysis, and visualization for non-technical stakeholders.',
-    problemStatement: 'Planning teams required better short-term demand estimates to reduce stock mismatches.',
-    outcomeSummary: 'Produced a forecasting workflow with baseline comparison and business-readable scenario outputs for planning decisions.',
-    impactMetrics: ['Time-series baseline benchmarking', 'Error-analysis-led model selection', 'Scenario views for stakeholders'],
-    methodologies: ['Time Series Analysis', 'ARIMA', 'Feature-based Forecasting', 'Python'],
+    tool: 'Python (statsmodels, Prophet, matplotlib)',
+    projectTypes: ['Data Analysis', 'Data Visualization', 'Data Cleaning'],
+    link: 'https://github.com/your-username/retail-sales-forecasting',
+    dataFiles: [
+      { name: 'sales_raw.csv', url: '/project-files/sales_raw.csv' },
+      { name: 'sales_processed.xlsx', url: '/project-files/sales_processed.xlsx' },
+      { name: 'store_metadata.csv', url: '/project-files/store_metadata.csv' },
+    ],
     category: 'Data Analysis',
     imageUrl: PlaceHolderImages.find(p => p.id === 'project-3')?.imageUrl ?? '',
     imageHint: PlaceHolderImages.find(p => p.id === 'project-3')?.imageHint ?? '',
+    goal: 'Just a couple sentences here describing the motivation for the project. Planning teams required better short-term demand estimates to reduce costly stock mismatches and improve inventory turnover.',
+    process: 'Describe briefly the steps, methodology and tooling used. Historical sales data was cleaned and decomposed into trend, seasonality, and residual components. ARIMA and Facebook Prophet models were trained, compared on MAPE, and the best-performing model was used to generate 12-week forward forecasts.',
+    insights: 'Write down your key findings, results, conclusions and highlights here. Seasonal spikes around public holidays accounted for 40% of annual variance, and Prophet outperformed ARIMA on datasets with strong weekly seasonality patterns.',
+    results: [
+      {
+        title: 'Result 1 – Holiday Spikes Drive 40% of Annual Sales Variance',
+        description: 'Public holidays and promotional periods account for 40% of the total year-on-year sales variance. Accurate pre-holiday stock positioning is the single highest-leverage planning opportunity.',
+        imageUrl: 'https://picsum.photos/seed/sales-seasonality/800/450',
+        imageHint: 'time series sales chart with holiday markers',
+      },
+      {
+        title: 'Result 2 – Prophet Outperforms ARIMA on Weekly Patterns',
+        description: 'Facebook Prophet achieved a MAPE of 6.2% vs. 9.8% for ARIMA on a 12-week holdout, particularly excelling on stores with strong weekly sales rhythms.',
+      },
+      {
+        title: 'Result 3 – 12-Week Forecast Enables Proactive Stock Orders',
+        description: 'The 12-week forecast horizon gave planners enough lead time to adjust supplier orders before demand peaks, reducing projected stockout risk by an estimated 30%.',
+      },
+    ],
     githubUrl: 'https://github.com/your-username/retail-sales-forecasting',
-    liveUrl: 'https://your-demo-url.com/sales-forecasting',
     docsPath: '/projects/3',
+  },
+  {
+    id: 4,
+    title: 'Housing Market Analysis in Braga',
+    description: 'Investigating housing prices in the Braga district in Portugal.',
+    tool: 'Tableau',
+    projectTypes: ['Data Visualization', 'Data Cleaning', 'Data Analysis'],
+    link: 'https://public.tableau.com/app/profile/your-name/viz/HousingMarketBraga/One',
+    linkLabel: 'public.tableau.com/app…ga/One',
+    dataFiles: [
+      { name: 'house_prices (col...)', url: '/project-files/house_prices_col.csv' },
+      { name: 'house_prices_final.xlsx', url: '/project-files/house_prices_final.xlsx' },
+    ],
+    category: 'Data Visualization',
+    imageUrl: '',
+    imageHint: 'housing market real estate map portugal',
+    goal: 'Just a couple sentences here describing the motivation behind choosing this specific project.',
+    process: 'Describe briefly the steps, methodology and tooling used in the project.',
+    insights: 'Write down your key findings/results/conclusions/highlights here.',
+    placeholderLabel: 'MO CHEN',
+    results: [
+      {
+        title: 'Result 1 - Question/Statement/Finding/Result/Conclusion Here',
+        description:
+          'Describe your key finding/conclusion/result/answer to the question you proposed here. Just a couple of sentences will do. If you have some visualization, include it below.',
+      },
+      {
+        title: 'Churn By Age',
+        description:
+          'X-axis: Age bins (15, 20, 25, 30, ... up to 90). Y-axis (left): Number of Customers (2000–8000 in one version, 0–2000 in another). Y-axis (right): Churn Rate (up to 80% in one version, 20–100% in another). Legend: teal bars = Number of Customers, red line = Churn Rate. Insight: younger age groups have more customers, while older age groups show higher churn rates.',
+        imageUrl: 'https://picsum.photos/seed/braga-price-dist/800/450',
+        imageHint: 'churn by age bar and line combo chart',
+      },
+    ],
+    docsPath: '/projects/4',
   },
 ];
 

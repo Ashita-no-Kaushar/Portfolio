@@ -15,7 +15,7 @@ import React from 'react';
 const Projects = () => {
   const [activeTab, setActiveTab] = useState('All');
 
-  const projectCategories = ['All', 'Machine Learning', 'NLP', 'Data Analysis'];
+  const projectCategories = ['All', 'Machine Learning', 'NLP', 'Data Analysis', 'Data Visualization'];
 
     const prioritizedProjects = [...projects].sort((a, b) => a.id - b.id);
 
@@ -60,40 +60,50 @@ const Projects = () => {
                                                         </div>
                                                     )}
                             <div className="aspect-[3/2] relative w-full">
-                            <Image
-                                src={project.imageUrl}
-                                alt={project.title}
-                                width={600}
-                                height={400}
-                                sizes="(max-width: 768px) 100vw, 600px"
-                                className="object-cover w-full h-full"
-                                data-ai-hint={project.imageHint}
-                                loading="lazy"
+                            {project.imageUrl ? (
+                                <Image
+                                    src={project.imageUrl}
+                                    alt={project.title}
+                                    width={600}
+                                    height={400}
+                                    sizes="(max-width: 768px) 100vw, 600px"
+                                    className="object-cover w-full h-full"
+                                    data-ai-hint={project.imageHint}
+                                    loading="lazy"
                                 />
-                                                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground text-xs font-medium tracking-widest">
+                                    INSERT YOUR IMAGE HERE
+                                </div>
+                            )}
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                             </div>
                             <CardTitle className="pt-4">{project.title}</CardTitle>
                         </CardHeader>
                         <CardContent className="flex-grow space-y-4">
                                                         <p className="text-muted-foreground text-sm min-h-[84px]">{project.description}</p>
                             <div className="flex flex-wrap gap-2">
-                            {project.methodologies.map((method) => (
-                                <Badge key={method} variant="secondary">{method}</Badge>
+                            {project.projectTypes.map((type) => (
+                                <Badge key={type} variant="secondary">{type}</Badge>
                             ))}
                             </div>
                         </CardContent>
                         <CardFooter>
                             <div className="flex w-full justify-center gap-2 flex-wrap">
+                                {project.githubUrl && (
                                 <Button asChild variant="outline" className="flex-1 min-w-[100px]">
                                     <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                                     <Github /> GitHub
                                     </Link>
                                 </Button>
+                                )}
+                                {project.link && (
                                 <Button asChild className="flex-1 min-w-[100px] shadow-md shadow-primary/20">
-                                    <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                                    <Link href={project.link} target="_blank" rel="noopener noreferrer">
                                     <ExternalLink /> Live
                                     </Link>
                                 </Button>
+                                )}
                                 <Button asChild variant="outline" className="flex-1 min-w-[100px]">
                                     <Link href={project.docsPath} prefetch={true}>
                                     <FileText /> Docs
