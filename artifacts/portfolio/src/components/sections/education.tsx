@@ -1,6 +1,6 @@
 
 'use client';
-import { education, sectionMeta } from '@/app/lib/data';
+import { education } from '@/app/lib/data';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { GraduationCap } from 'lucide-react';
 import {
@@ -15,8 +15,8 @@ const Education = () => {
     <div className="py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">{sectionMeta.education.title}</h2>
-          <p className="text-lg text-muted-foreground mt-2">{sectionMeta.education.subtitle}</p>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">Education</h2>
+          <p className="text-lg text-muted-foreground mt-2">Academic foundation and coursework aligned with analytics, data engineering, and data science growth.</p>
         </div>
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-1/2 top-0 hidden h-full w-0.5 bg-primary/20 md:block" />

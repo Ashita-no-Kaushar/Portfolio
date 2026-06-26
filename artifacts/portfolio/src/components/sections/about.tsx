@@ -1,6 +1,5 @@
 
-import { aboutMe, sectionMeta } from '@/app/lib/data';
-import { siteConfig } from '@/config/site';
+import { aboutMe } from '@/app/lib/data';
 import { Card, CardContent } from '@/components/ui/card';
 
 const About = () => {
@@ -8,8 +7,8 @@ const About = () => {
     <div className="py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">{sectionMeta.about.title}</h2>
-          <p className="text-lg text-muted-foreground mt-2">{sectionMeta.about.subtitle}</p>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">About Me</h2>
+          <p className="text-lg text-muted-foreground mt-2">Aspiring Data Analyst with a clear growth path into Data Engineering and Data Science.</p>
         </div>
         
         <div className="max-w-4xl mx-auto">
@@ -19,11 +18,11 @@ const About = () => {
                 <div className="md:col-span-1">
                   <div className="w-[250px] h-[250px] mx-auto relative">
                     <img
-                      src={aboutMe.imageUrl}
-                      alt={siteConfig.name}
+                      src="/icon.svg"
+                      alt="Kaushar Halani"
                       width={250}
                       height={250}
-                      className="object-cover rounded-full shadow-lg"
+                      className="object-contain rounded-full shadow-lg"
                     />
                   </div>
                 </div>

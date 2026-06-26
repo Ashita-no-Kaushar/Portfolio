@@ -6,7 +6,6 @@ import {
   tools,
   softSkills,
   languages,
-  sectionMeta,
   type SkillLevel,
   type CEFRLevel,
 } from '@/app/lib/data';
@@ -58,10 +57,10 @@ const Skills = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">
-            {sectionMeta.skills.title}
+            Skills & Expertise
           </h2>
           <p className="text-lg text-muted-foreground mt-2">
-            {sectionMeta.skills.subtitle}
+            A snapshot of my technical and professional abilities.
           </p>
         </div>
 
