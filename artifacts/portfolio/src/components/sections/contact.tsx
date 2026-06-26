@@ -40,6 +40,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -52,6 +53,11 @@ const Contact = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (honeypot) {
+      setSuccess(true);
+      form.reset();
+      return;
+    }
     setIsSubmitting(true);
     setError(null);
     setSuccess(false);
@@ -100,6 +106,17 @@ const Contact = () => {
             <CardContent className="p-6 md:p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  {/* Honeypot — hidden from real users, traps bots */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    autoComplete="off"
+                    style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, width: 0 }}
+                  />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}

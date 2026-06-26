@@ -1,0 +1,1 @@
+- [Site config](site-config.md) — central content file at src/config/site.ts; hero, SEO, stats all read from it
