@@ -21,33 +21,33 @@ import * as LucideIcons from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const skillLevelColor: Record<SkillLevel, string> = {
-  Advanced: 'bg-red-500/20 text-red-400 border-red-500/30',
-  Intermediate: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-  Beginner: 'bg-green-500/20 text-green-400 border-green-500/30',
+  Advanced:     'bg-white/10 text-white border-white/20',
+  Intermediate: 'bg-white/[0.06] text-white/65 border-white/[0.12]',
+  Beginner:     'bg-white/[0.03] text-white/40 border-white/[0.07]',
 };
 
 const skillLevelHoverColor: Record<SkillLevel, string> = {
-    Advanced: 'hover:shadow-red-500/20',
-    Intermediate: 'hover:shadow-yellow-500/20',
-    Beginner: 'hover:shadow-green-500/20',
+  Advanced:     'hover:shadow-white/10',
+  Intermediate: 'hover:shadow-white/[0.06]',
+  Beginner:     'hover:shadow-white/[0.03]',
 };
 
 const cefrLevelColor: Record<CEFRLevel, string> = {
-  A1: 'bg-green-500/20 text-green-400 border-green-500/30',
-  A2: 'bg-green-500/20 text-green-400 border-green-500/30',
-  B1: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-  B2: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-  C1: 'bg-red-500/20 text-red-400 border-red-500/30',
-  C2: 'bg-red-500/20 text-red-400 border-red-500/30',
+  A1: 'bg-white/[0.03] text-white/40 border-white/[0.07]',
+  A2: 'bg-white/[0.03] text-white/40 border-white/[0.07]',
+  B1: 'bg-white/[0.06] text-white/65 border-white/[0.12]',
+  B2: 'bg-white/[0.06] text-white/65 border-white/[0.12]',
+  C1: 'bg-white/10 text-white border-white/20',
+  C2: 'bg-white/10 text-white border-white/20',
 };
 
 const cefrLevelHoverColor: Record<CEFRLevel, string> = {
-  A1: 'hover:shadow-green-500/20',
-  A2: 'hover:shadow-green-500/20',
-  B1: 'hover:shadow-yellow-500/20',
-  B2: 'hover:shadow-yellow-500/20',
-  C1: 'hover:shadow-red-500/20',
-  C2: 'hover:shadow-red-500/20',
+  A1: 'hover:shadow-white/[0.03]',
+  A2: 'hover:shadow-white/[0.03]',
+  B1: 'hover:shadow-white/[0.06]',
+  B2: 'hover:shadow-white/[0.06]',
+  C1: 'hover:shadow-white/10',
+  C2: 'hover:shadow-white/10',
 };
 
 
