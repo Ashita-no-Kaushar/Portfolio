@@ -431,3 +431,45 @@ export const profileLinks = [
     },
   ];
 
+/**
+ * ─────────────────────────────────────────────────────────────
+ *  SECTION HEADINGS & SUBTITLES
+ *  Change your role focus here and every section title/subtitle
+ *  updates automatically across the whole portfolio.
+ * ─────────────────────────────────────────────────────────────
+ */
+export const sectionMeta = {
+  about: {
+    title: "About Me",
+    subtitle: "Aspiring Data Analyst with a clear growth path into Data Engineering and Data Science.",
+  },
+  projects: {
+    title: "Projects",
+    subtitle: "Selected projects with clear problem statements, approach, and measurable outcomes.",
+  },
+  skills: {
+    title: "Skills & Expertise",
+    subtitle: "A snapshot of my technical and professional abilities.",
+  },
+  experience: {
+    title: "Experience",
+    subtitle: "Hands-on project and freelance experience in analytics, data workflows, and model delivery.",
+  },
+  education: {
+    title: "Education",
+    subtitle: "Academic foundation and coursework aligned with analytics, data engineering, and data science growth.",
+  },
+  contact: {
+    title: "Get in Touch",
+    subtitle: "Open to internships, freelance collaborations, and entry-level data roles. I usually respond within 24 hours.",
+  },
+};
+
+export const projectCategories = [
+  'All',
+  'Machine Learning',
+  'NLP',
+  'Data Analysis',
+  'Data Visualization',
+] as const;
+

@@ -20,6 +20,7 @@ import { useState } from "react";
 import { Loader2, Send } from "lucide-react";
 import emailjs from '@emailjs/browser';
 import { InlineMessage } from "@/components/ui/inline-message";
+import { sectionMeta } from "@/app/lib/data";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -97,8 +98,8 @@ const Contact = () => {
     <div className="py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">Get in Touch</h2>
-          <p className="text-lg text-muted-foreground mt-2">Open to internships, freelance collaborations, and entry-level data roles. I usually respond within 24 hours.</p>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">{sectionMeta.contact.title}</h2>
+          <p className="text-lg text-muted-foreground mt-2">{sectionMeta.contact.subtitle}</p>
         </div>
 
         <div className="max-w-2xl mx-auto">

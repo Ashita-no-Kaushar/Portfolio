@@ -3,7 +3,7 @@
 
 import { Link } from 'wouter';
 import { useState } from 'react';
-import { projects } from '@/app/lib/data';
+import { projects, sectionMeta, projectCategories } from '@/app/lib/data';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -13,8 +13,6 @@ import React from 'react';
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState('All');
-
-  const projectCategories = ['All', 'Machine Learning', 'NLP', 'Data Analysis', 'Data Visualization'];
 
     const prioritizedProjects = [...projects].sort((a, b) => a.id - b.id);
 
@@ -26,8 +24,8 @@ const Projects = () => {
     <div className="py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">Projects</h2>
-                    <p className="mx-auto mt-2 max-w-2xl text-lg text-muted-foreground">Selected projects with clear problem statements, approach, and measurable outcomes.</p>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">{sectionMeta.projects.title}</h2>
+          <p className="mx-auto mt-2 max-w-2xl text-lg text-muted-foreground">{sectionMeta.projects.subtitle}</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
