@@ -10,6 +10,7 @@ import ResumePage from "@/app/resume/page";
 import ProjectDetailsPage from "@/app/projects/[id]/page";
 import ProjectReportPage from "@/app/projects/[id]/report/page";
 import NotFound from "@/pages/not-found";
+import { ErrorBoundary } from "@/components/ui/error-boundary";
 
 const queryClient = new QueryClient();
 
@@ -34,13 +35,15 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <Router />
+          </WouterRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 

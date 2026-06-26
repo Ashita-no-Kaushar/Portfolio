@@ -10,18 +10,19 @@ import { Separator } from '@/components/ui/separator';
 import { motion } from 'framer-motion';
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
 
 const MotionSection = ({ id, children }: { id: string; children: React.ReactNode }) => (
   <motion.section
     id={id}
+    aria-label={id}
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: false, amount: 0.1 }}
+    viewport={{ once: true, amount: 0.08 }}
     variants={sectionVariants}
-    transition={{ duration: 0.5 }}
+    transition={{ duration: 0.5, ease: 'easeOut' }}
   >
     {children}
   </motion.section>
@@ -30,7 +31,7 @@ const MotionSection = ({ id, children }: { id: string; children: React.ReactNode
 export default function Home() {
   return (
     <div className="flex flex-col min-h-dvh bg-background">
-      <main className="flex-1">
+      <main id="main-content" className="flex-1" tabIndex={-1}>
         <Hero />
         <div className="pt-16 md:pt-20">
           <Separator />

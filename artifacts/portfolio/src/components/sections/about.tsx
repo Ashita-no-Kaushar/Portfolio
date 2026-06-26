@@ -1,6 +1,8 @@
-
 import { aboutMe } from '@/app/lib/data';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Link } from 'wouter';
+import { FolderOpen, Mail } from 'lucide-react';
 
 const About = () => {
   return (
@@ -8,29 +10,48 @@ const About = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">About Me</h2>
-          <p className="text-lg text-muted-foreground mt-2">Aspiring Data Analyst with a clear growth path into Data Engineering and Data Science.</p>
+          <p className="text-lg text-muted-foreground mt-2">
+            Aspiring Data Analyst with a clear growth path into Data Engineering and Data Science.
+          </p>
         </div>
-        
+
         <div className="max-w-4xl mx-auto">
           <Card>
             <CardContent className="p-6 md:p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <div className="md:col-span-1">
-                  <div className="w-[250px] h-[250px] mx-auto relative">
-                    <img
-                      src="/icon.svg"
-                      alt="Kaushar Halani"
-                      width={250}
-                      height={250}
-                      className="object-contain rounded-full shadow-lg"
-                    />
+                  <div className="w-[200px] h-[200px] md:w-[220px] md:h-[220px] mx-auto relative">
+                    <div
+                      className="w-full h-full rounded-full border-2 border-primary/20 bg-primary/5 flex items-center justify-center"
+                      aria-label="Profile photo placeholder — add your photo in Phase 2"
+                    >
+                      <span className="text-4xl md:text-5xl font-bold font-headline text-primary/40 select-none">
+                        KH
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <div className="md:col-span-2">
-                  <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+
+                <div className="md:col-span-2 space-y-6">
+                  <div className="text-base md:text-lg text-muted-foreground leading-relaxed space-y-4">
                     {aboutMe.description.split('\n\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <Button asChild size="sm">
+                      <Link href="/#projects">
+                        <FolderOpen className="mr-2 h-4 w-4" />
+                        View Projects
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="sm">
+                      <Link href="/#contact">
+                        <Mail className="mr-2 h-4 w-4" />
+                        Get in Touch
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </div>
