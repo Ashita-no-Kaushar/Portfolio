@@ -115,7 +115,7 @@ export default function NeuralNetworkBackground() {
           }
 
           const alpha = 1 - distance / connectionDistance;
-          context.strokeStyle = `hsla(182, 100%, 74%, ${alpha * 0.26})`;
+          context.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.18})`;
           context.lineWidth = 1;
           context.beginPath();
           context.moveTo(first.x, first.y);
@@ -126,7 +126,7 @@ export default function NeuralNetworkBackground() {
           const pulseX = first.x + dx * pulse;
           const pulseY = first.y + dy * pulse;
 
-          context.fillStyle = `hsla(182, 100%, 74%, ${alpha * 0.9})`;
+          context.fillStyle = `rgba(255, 255, 255, ${alpha * 0.7})`;
           context.beginPath();
           context.arc(pulseX, pulseY, 1.6, 0, Math.PI * 2);
           context.fill();
@@ -135,12 +135,12 @@ export default function NeuralNetworkBackground() {
 
       for (let index = 0; index < nodes.length; index++) {
         const node = nodes[index];
-        context.fillStyle = "hsla(182, 100%, 74%, 0.9)";
+        context.fillStyle = "rgba(255, 255, 255, 0.75)";
         context.beginPath();
         context.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         context.fill();
 
-        context.fillStyle = "hsla(182, 100%, 74%, 0.22)";
+        context.fillStyle = "rgba(255, 255, 255, 0.08)";
         context.beginPath();
         context.arc(node.x, node.y, node.radius * 2.4, 0, Math.PI * 2);
         context.fill();
